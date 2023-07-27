@@ -1,6 +1,5 @@
 import random
 
-
 class TimeMachineAI:
     """
     A class representing a Time Machine AI.
@@ -26,7 +25,6 @@ class TimeMachineAI:
     def generate_schematic(self):
         """
         Generate a schematic for the Time Machine.
-
         Returns:
             A string representing the Time Machine schematic.
         """
@@ -35,22 +33,24 @@ class TimeMachineAI:
 
         dimensions_values = {dimension: random.randint(10, 100) for dimension in self.dimensions}
         schematic += "Dimensions:\n"
-        schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items())
-        schematic += "\n\n"
+        for dimension, value in dimensions_values.items():
+            schematic += f"{dimension}: {value} meters\n"
+        schematic += "\n"
 
         schematic += "Materials:\n"
         materials_sample = random.sample(self.materials, 3)
-        schematic += "\n".join(materials_sample)
-        schematic += "\n\n"
+        for material in materials_sample:
+            schematic += material + "\n"
+        schematic += "\n"
 
         schematic += "Power Source:\n"
         power_source = random.choice(self.power_sources)
-        schematic += power_source
-        schematic += "\n\n"
+        schematic += power_source + "\n\n"
 
         schematic += "Components:\n"
-        schematic += "\n".join(self.components)
-        schematic += "\n\n"
+        for component in self.components:
+            schematic += component + "\n"
+        schematic += "\n"
 
         return schematic
 
