@@ -5,13 +5,22 @@ import random
 import string
 import requests
 
+
 def generate_idea():
-    # Generate a custom idea
+    """
+    Generate a custom idea for the program.
+    :return: A string representing the idea.
+    """
     # TODO: Use advanced AI techniques to generate creative ideas
     return "Create a program that can predict the weather accurately for the next 7 days."
 
+
 def convert_to_prompt(idea):
-    # Convert the idea into a detailed prompt
+    """
+    Convert the idea into a detailed prompt.
+    :param idea: The program idea.
+    :return: A string representing the prompt.
+    """
     prompt = """Create a Python program that predicts the weather accurately for the next 7 days.
     
 Your program should:
@@ -25,8 +34,13 @@ Bonus points for:
 """
     return prompt
 
+
 def transform_prompt_to_code(prompt):
-    # Transform the prompt into a functioning Python program
+    """
+    Transform the prompt into a functioning Python program.
+    :param prompt: The program prompt.
+    :return: A string representing the code.
+    """
     code = """import requests
 
 def fetch_weather_forecast(location):
@@ -59,13 +73,23 @@ fetch_weather_forecast(location)
 
     return code
 
+
 def save_code_to_file(code, file_name):
-    # Save the code to a Python script file
+    """
+    Save the code to a Python script file.
+    :param code: The code.
+    :param file_name: The name of the file.
+    """
     with open(file_name, 'w') as file:
         file.write(code)
 
+
 def upload_to_github(repository_url, file_name):
-    # Upload the script to a GitHub repository
+    """
+    Upload the script to a GitHub repository.
+    :param repository_url: The URL of the GitHub repository.
+    :param file_name: The name of the file.
+    """
     destination_path = os.path.join("github_repo", file_name)
     shutil.copyfile(file_name, destination_path)
     os.chdir("github_repo")
@@ -73,7 +97,11 @@ def upload_to_github(repository_url, file_name):
     subprocess.run(["git", "commit", "-m", "Added script"])
     subprocess.run(["git", "push", "origin", "master"])
 
+
 def main():
+    """
+    Main function to generate the Python script and upload it to GitHub.
+    """
     idea = generate_idea()
     prompt = convert_to_prompt(idea)
     code = transform_prompt_to_code(prompt)
@@ -83,6 +111,7 @@ def main():
     upload_to_github("https://github.com/your-username/repository", file_name)
 
     print("Python script generated and uploaded successfully.")
+
 
 if __name__ == '__main__':
     main()
