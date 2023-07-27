@@ -1,5 +1,6 @@
 import random
 
+
 class TimeMachineAI:
     """
     A class representing a Time Machine AI.
@@ -11,8 +12,16 @@ class TimeMachineAI:
         """
         self.dimensions = ["Length", "Width", "Height"]
         self.materials = ["Steel", "Aluminum", "Titanium"]
-        self.power_sources = ["Nuclear Fusion Reactor", "Antimatter Annihilation Chamber", "Zero-Point Energy Extractor"]
-        self.components = ["Temporal Displacement Coil", "Chrono-Vector Stabilizer", "Quantum Flux Compensator"]
+        self.power_sources = [
+            "Nuclear Fusion Reactor",
+            "Antimatter Annihilation Chamber",
+            "Zero-Point Energy Extractor",
+        ]
+        self.components = [
+            "Temporal Displacement Coil",
+            "Chrono-Vector Stabilizer",
+            "Quantum Flux Compensator",
+        ]
         self.schematic = self.generate_schematic()
 
     def generate_schematic(self):
@@ -20,28 +29,28 @@ class TimeMachineAI:
         Generate a schematic for the Time Machine.
 
         Returns:
-        A string representing the Time Machine schematic.
+            A string representing the Time Machine schematic.
         """
         schematic = "Time Machine Schematic:\n"
         schematic += "-----------------------\n\n"
 
         schematic += "Dimensions:\n"
-        for dimension in self.dimensions:
-            value = random.randint(10, 100)
-            schematic += f"{dimension}: {value} meters\n"
-        schematic += "\n"
+        dimensions_values = {dimension: random.randint(10, 100) for dimension in self.dimensions}
+        schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items())
+        schematic += "\n\n"
 
         schematic += "Materials:\n"
-        materials = random.sample(self.materials, 3)
-        schematic += '\n'.join(materials)
+        materials_sample = random.sample(self.materials, 3)
+        schematic += "\n".join(materials_sample)
         schematic += "\n\n"
 
         schematic += "Power Source:\n"
-        schematic += random.choice(self.power_sources)
+        power_source = random.choice(self.power_sources)
+        schematic += power_source
         schematic += "\n\n"
 
         schematic += "Components:\n"
-        schematic += '\n'.join(self.components)
+        schematic += "\n".join(self.components)
         schematic += "\n\n"
 
         return schematic
