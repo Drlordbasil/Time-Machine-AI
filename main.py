@@ -13,7 +13,7 @@ class TimeMachineAI:
         self.materials = ["Steel", "Aluminum", "Titanium"]
         self.power_sources = ["Nuclear Fusion Reactor", "Antimatter Annihilation Chamber", "Zero-Point Energy Extractor"]
         self.components = ["Temporal Displacement Coil", "Chrono-Vector Stabilizer", "Quantum Flux Compensator"]
-        self.schematic = ""
+        self.schematic = self.generate_schematic()
 
     def generate_schematic(self):
         """
@@ -22,28 +22,29 @@ class TimeMachineAI:
         Returns:
         A string representing the Time Machine schematic.
         """
-        self.schematic = "Time Machine Schematic:\n"
-        self.schematic += "-----------------------\n\n"
+        schematic = "Time Machine Schematic:\n"
+        schematic += "-----------------------\n\n"
 
-        self.schematic += "Dimensions:\n"
+        schematic += "Dimensions:\n"
         for dimension in self.dimensions:
             value = random.randint(10, 100)
-            self.schematic += f"{dimension}: {value} meters\n"
-        self.schematic += "\n"
+            schematic += f"{dimension}: {value} meters\n"
+        schematic += "\n"
 
-        self.schematic += "Materials:\n"
-        self.schematic += '\n'.join(random.sample(self.materials, 3))
-        self.schematic += "\n\n"
+        schematic += "Materials:\n"
+        materials = random.sample(self.materials, 3)
+        schematic += '\n'.join(materials)
+        schematic += "\n\n"
 
-        self.schematic += "Power Source:\n"
-        self.schematic += random.choice(self.power_sources)
-        self.schematic += "\n\n"
+        schematic += "Power Source:\n"
+        schematic += random.choice(self.power_sources)
+        schematic += "\n\n"
 
-        self.schematic += "Components:\n"
-        self.schematic += '\n'.join(self.components)
-        self.schematic += "\n\n"
+        schematic += "Components:\n"
+        schematic += '\n'.join(self.components)
+        schematic += "\n\n"
 
-        return self.schematic
+        return schematic
 
 
 def main():
@@ -51,14 +52,8 @@ def main():
     The main function.
     """
     tm_ai = TimeMachineAI()
-    schematic = tm_ai.generate_schematic()
-    print(schematic)
+    print(tm_ai.schematic)
 
 
 if __name__ == "__main__":
     main()
-
-# improvements:
-# - used random.sample instead of random.choice to ensure unique materials are chosen
-# - removed unnecessary newlines after power source and components
-# - removed unnecessary self.schematic assignment during initialization
