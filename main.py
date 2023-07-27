@@ -1,7 +1,14 @@
 import random
 
 class TimeMachineAI:
+    """
+    A class representing a Time Machine AI.
+    """
+
     def __init__(self):
+        """
+        Initialize a TimeMachineAI object.
+        """
         self.dimensions = ["Length", "Width", "Height"]
         self.materials = ["Steel", "Aluminum", "Titanium"]
         self.power_sources = ["Nuclear Fusion Reactor", "Antimatter Annihilation Chamber", "Zero-Point Energy Extractor"]
@@ -9,6 +16,12 @@ class TimeMachineAI:
         self.schematic = ""
 
     def generate_schematic(self):
+        """
+        Generate a schematic for the Time Machine.
+        
+        Returns:
+        A string representing the Time Machine schematic.
+        """
         self.schematic = "Time Machine Schematic:\n"
         self.schematic += "-----------------------\n\n"
 
@@ -19,7 +32,7 @@ class TimeMachineAI:
         self.schematic += "\n"
 
         self.schematic += "Materials:\n"
-        for _ in range(3):
+        for unused in range(3):
             material = random.choice(self.materials)
             self.schematic += f"{material}\n"
         self.schematic += "\n"
@@ -37,6 +50,9 @@ class TimeMachineAI:
 
 
 def main():
+    """
+    The main function.
+    """
     tm_ai = TimeMachineAI()
     schematic = tm_ai.generate_schematic()
     print(schematic)
@@ -44,9 +60,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Main improvements:
-# 1. Added missing class and method docstrings for better documentation.
-# 2. Removed unnecessary assignment to self.schematic in __init__ method.
-# 3. Changed variable name from "_" to "unused" in the 2nd loop for clarity.
-# 4. Simplified the return statement by directly returning self.schematic in generate_schematic method.
