@@ -1,31 +1,42 @@
 import random
 
+
 class TimeMachineAI:
     def __init__(self):
-        self.components = {"flux capacitor": ["1.21 gigawatt power source", "time circuits"],
-                           "quantum stabilizer": ["wormhole generator", "neutrino beam emitter"],
-                           "temporal displacer": ["chroniton containment field", "chronal accelerator"]}
-        
-    def generate_schematics(self):
-        schematics = []
-        
-        for component, requirements in self.components.items():
-            schematic = self._generate_component_schematic(component, requirements)
-            schematics.append(schematic)
-        
-        return schematics
-    
-    def _generate_component_schematic(self, component, requirements):
-        schematic = f"Component: {component}\n"
-        
-        for requirement in requirements:
-            schematic += f"- {requirement}\n"
-        
-        return schematic
+        self.dimensions = ["Length", "Width", "Height"]
+        self.materials = ["Steel", "Aluminum", "Titanium"]
+        self.power_sources = ["Nuclear Fusion Reactor", "Antimatter Annihilation Chamber", "Zero-Point Energy Extractor"]
+        self.components = ["Temporal Displacement Coil", "Chrono-Vector Stabilizer", "Quantum Flux Compensator"]
+        self.schematic = ""
 
-time_machine_ai = TimeMachineAI()
-schematics = time_machine_ai.generate_schematics()
+    def generate_schematic(self):
+        self.schematic += "Time Machine Schematic:\n"
+        self.schematic += "-----------------------\n\n"
 
-for schematic in schematics:
-    print(schematic)
-    print()
+        self.schematic += "Dimensions:\n"
+        for dimension in self.dimensions:
+            value = random.randint(10, 100)
+            self.schematic += f"{dimension}: {value} meters\n"
+        self.schematic += "\n"
+
+        self.schematic += "Materials:\n"
+        for _ in range(3):
+            material = random.choice(self.materials)
+            self.schematic += f"{material}\n"
+        self.schematic += "\n"
+
+        self.schematic += "Power Source:\n"
+        power_source = random.choice(self.power_sources)
+        self.schematic += f"{power_source}\n\n"
+
+        self.schematic += "Components:\n"
+        for component in self.components:
+            self.schematic += f"{component}\n"
+        self.schematic += "\n"
+
+        return self.schematic
+
+
+tm_ai = TimeMachineAI()
+schematic = tm_ai.generate_schematic()
+print(schematic)
