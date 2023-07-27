@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 
 class TimeMachineAI:
     
@@ -27,7 +28,7 @@ class TimeMachineAI:
     def generate_header(self):
         header = "Time Machine Schematics\n\n"
         header += f"Designed by: {self.name}\n"
-        header += f"Date: {self.get_random_date()}\n\n"
+        header += f"Date: {datetime.now().strftime('%d/%m/%Y')}\n\n"
         return header
     
     def generate_power_supply(self):
@@ -146,9 +147,6 @@ class TimeMachineAI:
         finish += "Please note that this is a fictional system and cannot be built.\n"
         finish += "This schematic is for entertainment purposes only.\n"
         return finish
-    
-    def get_random_date(self):
-        return f"{random.randint(1, 28)}/{random.randint(1, 12)}/{random.randint(2000, 2021)}"
     
     def get_random_color(self):
         return random.choice(self.colors)
