@@ -32,19 +32,16 @@ class TimeMachineAI:
         self.schematic += "\n"
 
         self.schematic += "Materials:\n"
-        for _ in range(3):
-            material = random.choice(self.materials)
-            self.schematic += f"{material}\n"
-        self.schematic += "\n"
+        self.schematic += '\n'.join(random.sample(self.materials, 3))
+        self.schematic += "\n\n"
 
         self.schematic += "Power Source:\n"
-        power_source = random.choice(self.power_sources)
-        self.schematic += f"{power_source}\n\n"
+        self.schematic += random.choice(self.power_sources)
+        self.schematic += "\n\n"
 
         self.schematic += "Components:\n"
-        for component in self.components:
-            self.schematic += f"{component}\n"
-        self.schematic += "\n"
+        self.schematic += '\n'.join(self.components)
+        self.schematic += "\n\n"
 
         return self.schematic
 
@@ -60,3 +57,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# improvements:
+# - used random.sample instead of random.choice to ensure unique materials are chosen
+# - removed unnecessary newlines after power source and components
+# - removed unnecessary self.schematic assignment during initialization
