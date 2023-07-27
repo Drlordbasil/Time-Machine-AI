@@ -1,42 +1,45 @@
 import random
 
+class TimeMachine:
+    def __init__(self, name):
+        self.name = name
+        self.schematics = {}
 
-class TimeMachineAI:
-    def __init__(self):
-        self.dimensions = ["Length", "Width", "Height"]
-        self.materials = ["Steel", "Aluminum", "Titanium"]
-        self.power_sources = ["Nuclear Fusion Reactor", "Antimatter Annihilation Chamber", "Zero-Point Energy Extractor"]
-        self.components = ["Temporal Displacement Coil", "Chrono-Vector Stabilizer", "Quantum Flux Compensator"]
-        self.schematic = ""
+    def add_component(self, component):
+        if component.category in self.schematics:
+            self.schematics[component.category].append(component.name)
+        else:
+            self.schematics[component.category] = [component.name]
 
-    def generate_schematic(self):
-        self.schematic += "Time Machine Schematic:\n"
-        self.schematic += "-----------------------\n\n"
+    def generate_schematics(self):
+        print(f"Schematics for {self.name}:")
+        for category, components in self.schematics.items():
+            print(f"{category}:")
+            for component in components:
+                print(f"- {component}")
+        print("Schematics generated successfully!")
 
-        self.schematic += "Dimensions:\n"
-        for dimension in self.dimensions:
-            value = random.randint(10, 100)
-            self.schematic += f"{dimension}: {value} meters\n"
-        self.schematic += "\n"
+class Component:
+    def __init__(self, name, category):
+        self.name = name
+        self.category = category
 
-        self.schematic += "Materials:\n"
-        for _ in range(3):
-            material = random.choice(self.materials)
-            self.schematic += f"{material}\n"
-        self.schematic += "\n"
+def generate_random_component():
+    categories = ["Power", "Control", "Navigation", "Time Manipulation"]
+    names = ["Flux Capacitor", "Temporal Displacement Device", "Quantum Processor", "Wormhole Generator",
+             "Time Coils", "Chrono Circuit", "Temporal Flux Absorber", "Dimensional Stabilizer"]
+    category = random.choice(categories)
+    name = random.choice(names)
+    return Component(name, category)
 
-        self.schematic += "Power Source:\n"
-        power_source = random.choice(self.power_sources)
-        self.schematic += f"{power_source}\n\n"
+def main():
+    time_machine = TimeMachine("Time-Machine-AI")
 
-        self.schematic += "Components:\n"
-        for component in self.components:
-            self.schematic += f"{component}\n"
-        self.schematic += "\n"
+    for _ in range(10):
+        component = generate_random_component()
+        time_machine.add_component(component)
 
-        return self.schematic
+    time_machine.generate_schematics()
 
-
-tm_ai = TimeMachineAI()
-schematic = tm_ai.generate_schematic()
-print(schematic)
+if __name__ == "__main__":
+    main()
