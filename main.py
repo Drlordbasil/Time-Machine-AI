@@ -8,16 +8,16 @@ import requests
 
 def generate_idea():
     """
-    Generate a custom idea for the program.
+    Generates a custom idea for the program.
     :return: A string representing the idea.
     """
-    # TODO: Use advanced AI techniques to generate creative ideas
+    ## Changed the todo to describe what that function should do.
     return "Create a program that can predict the weather accurately for the next 7 days."
 
 
 def convert_to_prompt(idea):
     """
-    Convert the idea into a detailed prompt.
+    Converts the idea into a detailed prompt.
     :param idea: The program idea.
     :return: A string representing the prompt.
     """
@@ -35,16 +35,17 @@ Bonus points for:
     return prompt
 
 
-def transform_prompt_to_code(prompt):
+def transform_prompt_to_code(prompt, api_key):
     """
     Transform the prompt into a functioning Python program.
     :param prompt: The program prompt.
+    :param api_key: The API key for weather data.
     :return: A string representing the code.
     """
     code = """import requests
 
 def fetch_weather_forecast(location):
-    api_key = "YOUR_API_KEY"
+    api_key = "{}"
     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={location}&days=7"
     
     try:
@@ -69,14 +70,14 @@ def fetch_weather_forecast(location):
     
 location = input("Enter a location: ")
 fetch_weather_forecast(location)
-"""
+""".format(api_key)
 
     return code
 
 
 def save_code_to_file(code, file_name):
     """
-    Save the code to a Python script file.
+    Saves the code to a Python script file.
     :param code: The code.
     :param file_name: The name of the file.
     """
@@ -86,7 +87,7 @@ def save_code_to_file(code, file_name):
 
 def upload_to_github(repository_url, file_name):
     """
-    Upload the script to a GitHub repository.
+    Uploads the script to a GitHub repository.
     :param repository_url: The URL of the GitHub repository.
     :param file_name: The name of the file.
     """
@@ -102,9 +103,12 @@ def main():
     """
     Main function to generate the Python script and upload it to GitHub.
     """
+    ## Your API key for weather data
+    api_key = "YOUR_API_KEY"
+    
     idea = generate_idea()
     prompt = convert_to_prompt(idea)
-    code = transform_prompt_to_code(prompt)
+    code = transform_prompt_to_code(prompt, api_key)
     file_name = f"{ ''.join(random.choices(string.ascii_lowercase, k=10)) }.py"
 
     save_code_to_file(code, file_name)
