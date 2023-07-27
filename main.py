@@ -25,7 +25,7 @@ class TimeMachineAI:
         return schematic
     
     def generate_header(self):
-        header = f"Time Machine Schematics\n\n"
+        header = "Time Machine Schematics\n\n"
         header += f"Designed by: {self.name}\n"
         header += f"Date: {self.get_random_date()}\n\n"
         return header
@@ -120,9 +120,9 @@ class TimeMachineAI:
     
     def generate_navigation_system(self):
         navigation_system = "Navigation System:\n\n"
-        navigation_system += "   - Location Adquisition Methods:\n"
+        navigation_system += "   - Location Acquisition Methods:\n"
         navigation_system += "       - GPS Coordinates\n"
-        navigation_system += "       - Temporal Spacial Temporizer\n"
+        navigation_system += "       - Temporal Spatial Temporizer\n"
         navigation_system += "   - Destination Guidance:\n"
         navigation_system += "       Heads-Up Holographic Display\n"
         navigation_system += "   - Time Machine Position Monitoring:\n"
