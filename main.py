@@ -113,7 +113,6 @@ class TimeMachineAI:
         return random.choice(self.colors)
 
 
-# A test run of the TimeMachineAI class
 if __name__ == "__main__":
     ai = TimeMachineAI("TimeMaster 9000")
     flux_capacitor_color = ai.get_random_color()
