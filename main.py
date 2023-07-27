@@ -15,12 +15,12 @@ class TimeMachineAI:
         self.power_sources = [
             "Nuclear Fusion Reactor",
             "Antimatter Annihilation Chamber",
-            "Zero-Point Energy Extractor",
+            "Zero-Point Energy Extractor"
         ]
         self.components = [
             "Temporal Displacement Coil",
             "Chrono-Vector Stabilizer",
-            "Quantum Flux Compensator",
+            "Quantum Flux Compensator"
         ]
         self.schematic = self.generate_schematic()
 
@@ -34,10 +34,11 @@ class TimeMachineAI:
         schematic = "Time Machine Schematic:\n"
         schematic += "-----------------------\n\n"
 
-        schematic += "Dimensions:\n"
         dimensions_values = {dimension: random.randint(10, 100) for dimension in self.dimensions}
-        schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items())
-        schematic += "\n\n"
+        schematic += "Dimensions:\n"
+        for dimension, value in dimensions_values.items():
+            schematic += f"{dimension}: {value} meters\n"
+        schematic += "\n"
 
         schematic += "Materials:\n"
         materials_sample = random.sample(self.materials, 3)
