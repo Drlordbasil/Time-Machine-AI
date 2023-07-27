@@ -1,5 +1,6 @@
 import random
 
+
 class TimeMachineAI:
     """
     A class representing a Time Machine AI.
