@@ -39,18 +39,14 @@ class TimeMachineAI:
 
         schematic += "Materials:\n"
         materials_sample = random.sample(self.materials, 3)
-        for material in materials_sample:
-            schematic += material + "\n"
-        schematic += "\n"
+        schematic += "\n".join(materials_sample) + "\n\n"
 
         schematic += "Power Source:\n"
         power_source = random.choice(self.power_sources)
         schematic += power_source + "\n\n"
 
         schematic += "Components:\n"
-        for component in self.components:
-            schematic += component + "\n"
-        schematic += "\n"
+        schematic += "\n".join(self.components) + "\n\n"
 
         return schematic
 
