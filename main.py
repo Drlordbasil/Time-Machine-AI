@@ -1,5 +1,4 @@
 import os
-import subprocess
 import shutil
 import random
 import string
@@ -41,18 +40,18 @@ def transform_prompt_to_code(prompt, api_key):
     :param api_key: The API key for weather data.
     :return: A string representing the code.
     """
-    code = """import requests
+    code = f"""import requests
 
 def fetch_weather_forecast(location):
-    api_key = "{}"
+    api_key = "{api_key}"
     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={location}&days=7"
-    
+
     try:
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
             forecast = data['forecast']['forecastday']
-                
+
             for day in forecast:
                 date = day['date']
                 condition = day['day']['condition']['text']
@@ -69,7 +68,7 @@ def fetch_weather_forecast(location):
     
 location = input("Enter a location: ")
 fetch_weather_forecast(location)
-""".format(api_key)
+"""
 
     return code
 
@@ -103,7 +102,7 @@ def main():
     Main function to generate the Python script and upload it to GitHub.
     """
     api_key = "YOUR_API_KEY"
-    
+
     idea = generate_idea()
     prompt = convert_to_prompt(idea)
     code = transform_prompt_to_code(prompt, api_key)
