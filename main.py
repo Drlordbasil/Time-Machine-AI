@@ -36,8 +36,8 @@ class TimeMachineAI:
         schematic = "Time Machine Schematic:\n"
         schematic += "-----------------------\n\n"
         schematic += "Dimensions:\n"
-        schematic += "\n".join([f"{dimension}: {value} meters" for dimension, value in dimensions_values.items()])
-        schematic += "\n\nMaterials:\n"
+        schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items()) + "\n\n"
+        schematic += "Materials:\n"
         schematic += "\n".join(materials_sample) + "\n\n"
         schematic += "Power Source:\n"
         schematic += power_source + "\n\n"
