@@ -6,6 +6,7 @@ import random
 import string
 import json
 
+
 class TimeMachineAI:
     def __init__(self, github_email, github_token):
         self.github_email = github_email
@@ -28,7 +29,7 @@ class TimeMachineAI:
 
     def generate_prompt(self, idea):
         # Convert the idea into a detailed prompt
-        prompt = f"""
+        prompt = f"""\
 # {idea}
 
 # TODO: Add detailed description of the prompt
@@ -43,7 +44,7 @@ class TimeMachineAI:
 
     def generate_program(self, prompt):
         # Generate a Python program based on the prompt
-        program = f"""
+        program = f"""\
 {prompt}
 
 # TODO: Implement the solution based on the prompt
@@ -171,6 +172,7 @@ if __name__ == "__main__":
             print(f"Created project: {project_name}")
         except Exception as e:
             print(f"Error: {e}")
+
 
 if __name__ == "__main__":
     # Main program to run the Time-Machine-AI
