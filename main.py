@@ -1,61 +1,160 @@
 import random
 
-
 class TimeMachineAI:
-    """
-    A class representing a Time Machine AI.
-    """
-
-    def __init__(self):
-        """
-        Initialize a TimeMachineAI object.
-        """
-        self.dimensions = ["Length", "Width", "Height"]
-        self.materials = ["Steel", "Aluminum", "Titanium"]
-        self.power_sources = [
-            "Nuclear Fusion Reactor",
-            "Antimatter Annihilation Chamber",
-            "Zero-Point Energy Extractor"
-        ]
-        self.components = [
-            "Temporal Displacement Coil",
-            "Chrono-Vector Stabilizer",
-            "Quantum Flux Compensator"
-        ]
-
-    def generate_schematic(self):
-        """
-        Generate a schematic for the Time Machine.
-        Returns:
-            A string representing the Time Machine schematic.
-        """
-        dimensions_values = {dimension: random.randint(10, 100) for dimension in self.dimensions}
-
-        schematic = "Time Machine Schematic:\n"
-        schematic += "-----------------------\n\n"
-        schematic += "Dimensions:\n"
-        schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items()) + "\n\n"
-        schematic += "Materials:\n"
-        schematic += "\n".join(random.sample(self.materials, 3)) + "\n\n"
-        schematic += "Power Source:\n"
-        schematic += random.choice(self.power_sources) + "\n\n"
-        schematic += "Components:\n"
-        schematic += "\n".join(self.components) + "\n\n"
-
+    
+    def __init__(self, name):
+        self.name = name
+        self.colors = ["red", "blue", "green", "yellow", "orange"]
+    
+    def create_schematics(self):
+        schematic = ""
+        
+        schematic += self.generate_header()
+        schematic += self.generate_power_supply()
+        schematic += self.generate_time_circuits()
+        schematic += self.generate_flux_capacitor()
+        schematic += self.generate_dimensional_field_generator()
+        schematic += self.generate_housing()
+        schematic += self.generate_controls()
+        schematic += self.generate_ancillary_systems()
+        schematic += self.generate_fuel_system()
+        schematic += self.generate_navigation_system()
+        schematic += self.generate_protective_systems()
+        schematic += self.generate_finish()
+        
         return schematic
+    
+    def generate_header(self):
+        header = f"Time Machine Schematics\n\n"
+        header += f"Designed by: {self.name}\n"
+        header += f"Date: {self.get_random_date()}\n\n"
+        return header
+    
+    def generate_power_supply(self):
+        power_supply = "Power Supply:\n\n"
+        power_supply += "   - Main Power Source:\n"
+        power_supply += f"       {self.get_random_color()} flux capacitor\n"
+        power_supply += "   - Backup Power Source:\n"
+        power_supply += "       Mr. Fusion\n\n"
+        return power_supply
+    
+    def generate_time_circuits(self):
+        time_circuits = "Time Circuits:\n\n"
+        time_circuits += "   - Primary Interface:\n"
+        time_circuits += "       Temporal Keypad\n"
+        time_circuits += "   - Destination Inputs:\n"
+        time_circuits += "       - Date\n"
+        time_circuits += "       - Time\n"
+        time_circuits += "   - Time Destination Display:\n"
+        time_circuits += "       Digital Display\n"
+        time_circuits += "   - Flux Capacitor Stabilizer:\n"
+        time_circuits += "       Micro-Time Displacement Oscillator\n\n"
+        return time_circuits
+    
+    def generate_flux_capacitor(self):
+        flux_capacitor = "Flux Capacitor:\n\n"
+        flux_capacitor += "   - Main Component:\n"
+        flux_capacitor += "       Flux Capacitor Module\n"
+        flux_capacitor += "   - Flux Energy Source:\n"
+        flux_capacitor += "       High-Voltage Plutonium Chamber\n"
+        flux_capacitor += "   - Flux Energy Regulator:\n"
+        flux_capacitor += "       Time-Variable Magnetic Field Stabilizer\n"
+        flux_capacitor += "   - Flux Energy Conversion:\n"
+        flux_capacitor += "       Einstein-Rosen Bridge\n\n"
+        return flux_capacitor
+    
+    def generate_dimensional_field_generator(self):
+        dimensional_field = "Dimensional Field Generator:\n\n"
+        dimensional_field += "   - Field Generation Device:\n"
+        dimensional_field += "       Miniaturized Wormhole Generator\n"
+        dimensional_field += "   - Field Strength Control:\n"
+        dimensional_field += "       Quantum-Field Flux Control Valve\n"
+        dimensional_field += "   - Field Structure Stabilizer:\n"
+        dimensional_field += "       Gravitational Anomaly Compensators\n"
+        dimensional_field += "   - Field Parameters Configuration:\n"
+        dimensional_field += "       Atomic Waveform Harmonizer\n\n"
+        return dimensional_field
+    
+    def generate_housing(self):
+        housing = "Housing:\n\n"
+        housing += f"   - Chassis Color: {self.get_random_color()}\n"
+        housing += "   - Exterior Material:\n"
+        housing += "       Light-Weight Graphene Composite\n"
+        housing += "   - Interior Insulation:\n"
+        housing += "       Temporal Energy Absorbers\n"
+        housing += "   - Structural Integrity Enhancements:\n"
+        housing += "       Reinforced Neutronium Alloy\n\n"
+        return housing
+    
+    def generate_controls(self):
+        controls = "Controls:\n\n"
+        controls += "- Time Machine Operations Console:\n"
+        controls += "   - Temporal Keypad\n"
+        controls += "   - Data Analyzer\n"
+        controls += "   - Temporal Flux Emitter Control\n"
+        controls += "   - Chronological Mapping System\n"
+        controls += "   - Alphanumeric Keyboard\n"
+        controls += "   - Status Display Panel\n"
+        controls += "   - Navigation Control Lever\n\n"
+        return controls
+    
+    def generate_ancillary_systems(self):
+        ancillary_systems = "Ancillary Systems:\n\n"
+        ancillary_systems += "- Temporal Tactical Defense System:\n"
+        ancillary_systems += "   - Temporal Force Field Emitter\n"
+        ancillary_systems += "   - Chrono-Chaff Dispenser\n"
+        ancillary_systems += "   - Temporally-Displaced Projectile Launcher\n"
+        ancillary_systems += "   - Temporal Disruptor\n"
+        ancillary_systems += "   - Phase Shifting Cloaking Device\n\n"
+        return ancillary_systems
+    
+    def generate_fuel_system(self):
+        fuel_system = "Fuel System:\n\n"
+        fuel_system += "   - Fuel Type:\n"
+        fuel_system += "       Plutonium (P-238)\n"
+        fuel_system += "   - Fuel Container:\n"
+        fuel_system += "       Plutonium Chamber\n"
+        fuel_system += "   - Fuel Capacity:\n"
+        fuel_system += "       1.21 Gigawatts\n\n"
+        return fuel_system
+    
+    def generate_navigation_system(self):
+        navigation_system = "Navigation System:\n\n"
+        navigation_system += "   - Location Adquisition Methods:\n"
+        navigation_system += "       - GPS Coordinates\n"
+        navigation_system += "       - Temporal Spacial Temporizer\n"
+        navigation_system += "   - Destination Guidance:\n"
+        navigation_system += "       Heads-Up Holographic Display\n"
+        navigation_system += "   - Time Machine Position Monitoring:\n"
+        navigation_system += "       Time-Space Differential Synchronizer\n\n"
+        return navigation_system
+    
+    def generate_protective_systems(self):
+        protective_systems = "Protective Systems:\n\n"
+        protective_systems += "   - Temporal Shields:\n"
+        protective_systems += "       - Chrono-Displacement Shields\n"
+        protective_systems += "       - Temporal Field Diffusers\n"
+        protective_systems += "   - Time Machine Cloaking System:\n"
+        protective_systems += "       - Optical Camouflage\n"
+        protective_systems += "   - Anti-Time Paradox Safety Measures:\n"
+        protective_systems += "       - Temporal Paradox Detector\n"
+        protective_systems += "       - Temporal Flux Adjuster\n\n"
+        return protective_systems
+    
+    def generate_finish(self):
+        finish = f"Thank you for using the {self.name} Time Machine AI.\n"
+        finish += "Please note that this is a fictional system and cannot be built.\n"
+        finish += "This schematic is for entertainment purposes only.\n"
+        return finish
+    
+    def get_random_date(self):
+        return f"{random.randint(1, 28)}/{random.randint(1, 12)}/{random.randint(2000, 2021)}"
+    
+    def get_random_color(self):
+        return random.choice(self.colors)
 
-
-def main():
-    """
-    The main function.
-    """
-    tm_ai = TimeMachineAI()
-    schematic = tm_ai.generate_schematic()
-    print(schematic)
-
-
+# A test run of the TimeMachineAI class
 if __name__ == "__main__":
-    main()
-
-# The code provided does not have any errors and is efficient and readable as it is.
-# I have made no changes to the code.
+    ai = TimeMachineAI("TimeMaster 9000")
+    schematics = ai.create_schematics()
+    print(schematics)
