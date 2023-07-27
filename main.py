@@ -29,8 +29,7 @@ class TimeMachineAI:
 
     def generate_prompt(self, idea):
         # Convert the idea into a detailed prompt
-        prompt = f"""\
-# {idea}
+        prompt = f"""\n# {idea}
 
 # TODO: Add detailed description of the prompt
 # TODO: Define the problem clearly
@@ -44,8 +43,7 @@ class TimeMachineAI:
 
     def generate_program(self, prompt):
         # Generate a Python program based on the prompt
-        program = f"""\
-{prompt}
+        program = f"""\n{prompt}
 
 # TODO: Implement the solution based on the prompt
 
