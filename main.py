@@ -35,23 +35,26 @@ def transform_prompt_to_code(prompt):
 def fetch_weather_forecast(location):
     api_key = "YOUR_API_KEY"
     url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={location}&days=7"
-
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        forecast = data['forecast']['forecastday']
-            
-        for day in forecast:
-            date = day['date']
-            condition = day['day']['condition']['text']
-            temp_c = day['day']['avgtemp_c']
-            temp_f = day['day']['avgtemp_f']
-            print(f"Date: {date}")
-            print(f"Condition: {condition}")
-            print(f"Temperature: {temp_c}°C / {temp_f}°F")
-            print()
-    else:
-        print("Failed to fetch weather forecast.")
+    
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            forecast = data['forecast']['forecastday']
+                
+            for day in forecast:
+                date = day['date']
+                condition = day['day']['condition']['text']
+                temp_c = day['day']['avgtemp_c']
+                temp_f = day['day']['avgtemp_f']
+                print(f"Date: {date}")
+                print(f"Condition: {condition}")
+                print(f"Temperature: {temp_c}°C / {temp_f}°F")
+                print()
+        else:
+            print("Failed to fetch weather forecast.")
+    except requests.exceptions.RequestException as e:
+        print(str(e))
     
 location = input("Enter a location: ")
 fetch_weather_forecast(location)
