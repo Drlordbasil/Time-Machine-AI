@@ -22,7 +22,6 @@ class TimeMachineAI:
             "Chrono-Vector Stabilizer",
             "Quantum Flux Compensator"
         ]
-        self.schematic = self.generate_schematic()
 
     def generate_schematic(self):
         """
@@ -36,9 +35,8 @@ class TimeMachineAI:
 
         dimensions_values = {dimension: random.randint(10, 100) for dimension in self.dimensions}
         schematic += "Dimensions:\n"
-        for dimension, value in dimensions_values.items():
-            schematic += f"{dimension}: {value} meters\n"
-        schematic += "\n"
+        schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items())
+        schematic += "\n\n"
 
         schematic += "Materials:\n"
         materials_sample = random.sample(self.materials, 3)
@@ -62,7 +60,8 @@ def main():
     The main function.
     """
     tm_ai = TimeMachineAI()
-    print(tm_ai.schematic)
+    schematic = tm_ai.generate_schematic()
+    print(schematic)
 
 
 if __name__ == "__main__":
