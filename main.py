@@ -30,17 +30,15 @@ class TimeMachineAI:
             A string representing the Time Machine schematic.
         """
         dimensions_values = {dimension: random.randint(10, 100) for dimension in self.dimensions}
-        materials_sample = random.sample(self.materials, 3)
-        power_source = random.choice(self.power_sources)
 
         schematic = "Time Machine Schematic:\n"
         schematic += "-----------------------\n\n"
         schematic += "Dimensions:\n"
         schematic += "\n".join(f"{dimension}: {value} meters" for dimension, value in dimensions_values.items()) + "\n\n"
         schematic += "Materials:\n"
-        schematic += "\n".join(materials_sample) + "\n\n"
+        schematic += "\n".join(random.sample(self.materials, 3)) + "\n\n"
         schematic += "Power Source:\n"
-        schematic += power_source + "\n\n"
+        schematic += random.choice(self.power_sources) + "\n\n"
         schematic += "Components:\n"
         schematic += "\n".join(self.components) + "\n\n"
 
