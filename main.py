@@ -18,7 +18,7 @@ class TimeMachineAI:
     def generate_schematic(self):
         """
         Generate a schematic for the Time Machine.
-        
+
         Returns:
         A string representing the Time Machine schematic.
         """
@@ -32,7 +32,7 @@ class TimeMachineAI:
         self.schematic += "\n"
 
         self.schematic += "Materials:\n"
-        for unused in range(3):
+        for _ in range(3):
             material = random.choice(self.materials)
             self.schematic += f"{material}\n"
         self.schematic += "\n"
