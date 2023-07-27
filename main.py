@@ -31,115 +31,131 @@ class TimeMachineAI:
         header += f"Date: {datetime.now().strftime('%d/%m/%Y')}\n\n"
         return header
     
+    def generate_section(self, title, content):
+        section = f"{title}:\n\n"
+        section += content
+        section += "\n"
+        return section
+    
     def generate_power_supply(self):
-        power_supply = "Power Supply:\n\n"
-        power_supply += "   - Main Power Source:\n"
-        power_supply += f"       {self.get_random_color()} flux capacitor\n"
-        power_supply += "   - Backup Power Source:\n"
-        power_supply += "       Mr. Fusion\n\n"
+        power_supply = self.generate_section("Power Supply", 
+            "   - Main Power Source:\n"
+            f"       {self.get_random_color()} flux capacitor\n"
+            "   - Backup Power Source:\n"
+            "       Mr. Fusion"
+        )
         return power_supply
     
     def generate_time_circuits(self):
-        time_circuits = "Time Circuits:\n\n"
-        time_circuits += "   - Primary Interface:\n"
-        time_circuits += "       Temporal Keypad\n"
-        time_circuits += "   - Destination Inputs:\n"
-        time_circuits += "       - Date\n"
-        time_circuits += "       - Time\n"
-        time_circuits += "   - Time Destination Display:\n"
-        time_circuits += "       Digital Display\n"
-        time_circuits += "   - Flux Capacitor Stabilizer:\n"
-        time_circuits += "       Micro-Time Displacement Oscillator\n\n"
+        time_circuits = self.generate_section("Time Circuits",
+            "   - Primary Interface:\n"
+            "       Temporal Keypad\n"
+            "   - Destination Inputs:\n"
+            "       - Date\n"
+            "       - Time\n"
+            "   - Time Destination Display:\n"
+            "       Digital Display\n"
+            "   - Flux Capacitor Stabilizer:\n"
+            "       Micro-Time Displacement Oscillator"
+        )
         return time_circuits
     
     def generate_flux_capacitor(self):
-        flux_capacitor = "Flux Capacitor:\n\n"
-        flux_capacitor += "   - Main Component:\n"
-        flux_capacitor += "       Flux Capacitor Module\n"
-        flux_capacitor += "   - Flux Energy Source:\n"
-        flux_capacitor += "       High-Voltage Plutonium Chamber\n"
-        flux_capacitor += "   - Flux Energy Regulator:\n"
-        flux_capacitor += "       Time-Variable Magnetic Field Stabilizer\n"
-        flux_capacitor += "   - Flux Energy Conversion:\n"
-        flux_capacitor += "       Einstein-Rosen Bridge\n\n"
+        flux_capacitor = self.generate_section("Flux Capacitor",
+            "   - Main Component:\n"
+            "       Flux Capacitor Module\n"
+            "   - Flux Energy Source:\n"
+            "       High-Voltage Plutonium Chamber\n"
+            "   - Flux Energy Regulator:\n"
+            "       Time-Variable Magnetic Field Stabilizer\n"
+            "   - Flux Energy Conversion:\n"
+            "       Einstein-Rosen Bridge"
+        )
         return flux_capacitor
     
     def generate_dimensional_field_generator(self):
-        dimensional_field = "Dimensional Field Generator:\n\n"
-        dimensional_field += "   - Field Generation Device:\n"
-        dimensional_field += "       Miniaturized Wormhole Generator\n"
-        dimensional_field += "   - Field Strength Control:\n"
-        dimensional_field += "       Quantum-Field Flux Control Valve\n"
-        dimensional_field += "   - Field Structure Stabilizer:\n"
-        dimensional_field += "       Gravitational Anomaly Compensators\n"
-        dimensional_field += "   - Field Parameters Configuration:\n"
-        dimensional_field += "       Atomic Waveform Harmonizer\n\n"
+        dimensional_field = self.generate_section("Dimensional Field Generator",
+            "   - Field Generation Device:\n"
+            "       Miniaturized Wormhole Generator\n"
+            "   - Field Strength Control:\n"
+            "       Quantum-Field Flux Control Valve\n"
+            "   - Field Structure Stabilizer:\n"
+            "       Gravitational Anomaly Compensators\n"
+            "   - Field Parameters Configuration:\n"
+            "       Atomic Waveform Harmonizer"
+        )
         return dimensional_field
     
     def generate_housing(self):
-        housing = "Housing:\n\n"
-        housing += f"   - Chassis Color: {self.get_random_color()}\n"
-        housing += "   - Exterior Material:\n"
-        housing += "       Light-Weight Graphene Composite\n"
-        housing += "   - Interior Insulation:\n"
-        housing += "       Temporal Energy Absorbers\n"
-        housing += "   - Structural Integrity Enhancements:\n"
-        housing += "       Reinforced Neutronium Alloy\n\n"
+        housing = self.generate_section("Housing",
+            f"   - Chassis Color: {self.get_random_color()}\n"
+            "   - Exterior Material:\n"
+            "       Light-Weight Graphene Composite\n"
+            "   - Interior Insulation:\n"
+            "       Temporal Energy Absorbers\n"
+            "   - Structural Integrity Enhancements:\n"
+            "       Reinforced Neutronium Alloy"
+        )
         return housing
     
     def generate_controls(self):
-        controls = "Controls:\n\n"
-        controls += "- Time Machine Operations Console:\n"
-        controls += "   - Temporal Keypad\n"
-        controls += "   - Data Analyzer\n"
-        controls += "   - Temporal Flux Emitter Control\n"
-        controls += "   - Chronological Mapping System\n"
-        controls += "   - Alphanumeric Keyboard\n"
-        controls += "   - Status Display Panel\n"
-        controls += "   - Navigation Control Lever\n\n"
+        controls = self.generate_section("Controls",
+            "- Time Machine Operations Console:\n"
+            "   - Temporal Keypad\n"
+            "   - Data Analyzer\n"
+            "   - Temporal Flux Emitter Control\n"
+            "   - Chronological Mapping System\n"
+            "   - Alphanumeric Keyboard\n"
+            "   - Status Display Panel\n"
+            "   - Navigation Control Lever"
+        )
         return controls
     
     def generate_ancillary_systems(self):
-        ancillary_systems = "Ancillary Systems:\n\n"
-        ancillary_systems += "- Temporal Tactical Defense System:\n"
-        ancillary_systems += "   - Temporal Force Field Emitter\n"
-        ancillary_systems += "   - Chrono-Chaff Dispenser\n"
-        ancillary_systems += "   - Temporally-Displaced Projectile Launcher\n"
-        ancillary_systems += "   - Temporal Disruptor\n"
-        ancillary_systems += "   - Phase Shifting Cloaking Device\n\n"
+        ancillary_systems = self.generate_section("Ancillary Systems",
+            "- Temporal Tactical Defense System:\n"
+            "   - Temporal Force Field Emitter\n"
+            "   - Chrono-Chaff Dispenser\n"
+            "   - Temporally-Displaced Projectile Launcher\n"
+            "   - Temporal Disruptor\n"
+            "   - Phase Shifting Cloaking Device"
+        )
         return ancillary_systems
     
     def generate_fuel_system(self):
-        fuel_system = "Fuel System:\n\n"
-        fuel_system += "   - Fuel Type:\n"
-        fuel_system += "       Plutonium (P-238)\n"
-        fuel_system += "   - Fuel Container:\n"
-        fuel_system += "       Plutonium Chamber\n"
-        fuel_system += "   - Fuel Capacity:\n"
-        fuel_system += "       1.21 Gigawatts\n\n"
+        fuel_system = self.generate_section("Fuel System",
+            "   - Fuel Type:\n"
+            "       Plutonium (P-238)\n"
+            "   - Fuel Container:\n"
+            "       Plutonium Chamber\n"
+            "   - Fuel Capacity:\n"
+            "       1.21 Gigawatts"
+        )
         return fuel_system
     
     def generate_navigation_system(self):
-        navigation_system = "Navigation System:\n\n"
-        navigation_system += "   - Location Acquisition Methods:\n"
-        navigation_system += "       - GPS Coordinates\n"
-        navigation_system += "       - Temporal Spatial Temporizer\n"
-        navigation_system += "   - Destination Guidance:\n"
-        navigation_system += "       Heads-Up Holographic Display\n"
-        navigation_system += "   - Time Machine Position Monitoring:\n"
-        navigation_system += "       Time-Space Differential Synchronizer\n\n"
+        navigation_system = self.generate_section("Navigation System",
+            "   - Location Acquisition Methods:\n"
+            "       - GPS Coordinates\n"
+            "       - Temporal Spatial Temporizer\n"
+            "   - Destination Guidance:\n"
+            "       Heads-Up Holographic Display\n"
+            "   - Time Machine Position Monitoring:\n"
+            "       Time-Space Differential Synchronizer"
+        )
         return navigation_system
     
     def generate_protective_systems(self):
-        protective_systems = "Protective Systems:\n\n"
-        protective_systems += "   - Temporal Shields:\n"
-        protective_systems += "       - Chrono-Displacement Shields\n"
-        protective_systems += "       - Temporal Field Diffusers\n"
-        protective_systems += "   - Time Machine Cloaking System:\n"
-        protective_systems += "       - Optical Camouflage\n"
-        protective_systems += "   - Anti-Time Paradox Safety Measures:\n"
-        protective_systems += "       - Temporal Paradox Detector\n"
-        protective_systems += "       - Temporal Flux Adjuster\n\n"
+        protective_systems = self.generate_section("Protective Systems",
+            "   - Temporal Shields:\n"
+            "       - Chrono-Displacement Shields\n"
+            "       - Temporal Field Diffusers\n"
+            "   - Time Machine Cloaking System:\n"
+            "       - Optical Camouflage\n"
+            "   - Anti-Time Paradox Safety Measures:\n"
+            "       - Temporal Paradox Detector\n"
+            "       - Temporal Flux Adjuster"
+        )
         return protective_systems
     
     def generate_finish(self):
