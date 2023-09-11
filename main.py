@@ -1,122 +1,65 @@
-import random
-from datetime import datetime
-
+import math
 
 class TimeMachineAI:
+    def __init__(self):
+        self.schematics = {}
+        self.formulas = {}
+    
+    def add_schematic(self, name, schematic):
+        self.schematics[name] = schematic
+    
+    def remove_schematic(self, name):
+        del self.schematics[name]
+    
+    def get_schematic(self, name):
+        return self.schematics.get(name, None)
+    
+    def add_formula(self, name, formula):
+        self.formulas[name] = formula
+    
+    def remove_formula(self, name):
+        del self.formulas[name]
+    
+    def get_formula(self, name):
+        return self.formulas.get(name, None)
+    
+    def calculate_time_travel(self, formula_name, values):
+        formula = self.get_formula(formula_name)
+        if formula is not None:
+            try:
+                x = eval(formula, {}, values)
+                return round(x, 2)
+            except:
+                return None
+        else:
+            return None
+    
 
-    def __init__(self, name):
-        self.name = name
-        self.colors = ["red", "blue", "green", "yellow", "orange"]
+# Example usage
 
-    def create_schematics(self):
-        schematic = self.generate_header()
-        schematic += self.generate_section("Power Supply",
-                                           "   - Main Power Source:\n"
-                                           "       {flux_capacitor_color} flux capacitor\n"
-                                           "   - Backup Power Source:\n"
-                                           "       Mr. Fusion")
-        schematic += self.generate_section("Time Circuits",
-                                           "   - Primary Interface:\n"
-                                           "       Temporal Keypad\n"
-                                           "   - Destination Inputs:\n"
-                                           "       - Date\n"
-                                           "       - Time\n"
-                                           "   - Time Destination Display:\n"
-                                           "       Digital Display\n"
-                                           "   - Flux Capacitor Stabilizer:\n"
-                                           "       Micro-Time Displacement Oscillator")
-        schematic += self.generate_section("Flux Capacitor",
-                                           "   - Main Component:\n"
-                                           "       Flux Capacitor Module\n"
-                                           "   - Flux Energy Source:\n"
-                                           "       High-Voltage Plutonium Chamber\n"
-                                           "   - Flux Energy Regulator:\n"
-                                           "       Time-Variable Magnetic Field Stabilizer\n"
-                                           "   - Flux Energy Conversion:\n"
-                                           "       Einstein-Rosen Bridge")
-        schematic += self.generate_section("Dimensional Field Generator",
-                                           "   - Field Generation Device:\n"
-                                           "       Miniaturized Wormhole Generator\n"
-                                           "   - Field Strength Control:\n"
-                                           "       Quantum-Field Flux Control Valve\n"
-                                           "   - Field Structure Stabilizer:\n"
-                                           "       Gravitational Anomaly Compensators\n"
-                                           "   - Field Parameters Configuration:\n"
-                                           "       Atomic Waveform Harmonizer")
-        schematic += self.generate_section("Housing",
-                                           "   - Chassis Color: {chassis_color}\n"
-                                           "   - Exterior Material:\n"
-                                           "       Light-Weight Graphene Composite\n"
-                                           "   - Interior Insulation:\n"
-                                           "       Temporal Energy Absorbers\n"
-                                           "   - Structural Integrity Enhancements:\n"
-                                           "       Reinforced Neutronium Alloy")
-        schematic += self.generate_section("Controls",
-                                           "- Time Machine Operations Console:\n"
-                                           "   - Temporal Keypad\n"
-                                           "   - Data Analyzer\n"
-                                           "   - Temporal Flux Emitter Control\n"
-                                           "   - Chronological Mapping System\n"
-                                           "   - Alphanumeric Keyboard\n"
-                                           "   - Status Display Panel\n"
-                                           "   - Navigation Control Lever")
-        schematic += self.generate_section("Ancillary Systems",
-                                           "- Temporal Tactical Defense System:\n"
-                                           "   - Temporal Force Field Emitter\n"
-                                           "   - Chrono-Chaff Dispenser\n"
-                                           "   - Temporally-Displaced Projectile Launcher\n"
-                                           "   - Temporal Disruptor\n"
-                                           "   - Phase Shifting Cloaking Device")
-        schematic += self.generate_section("Fuel System",
-                                           "   - Fuel Type:\n"
-                                           "       Plutonium (P-238)\n"
-                                           "   - Fuel Container:\n"
-                                           "       Plutonium Chamber\n"
-                                           "   - Fuel Capacity:\n"
-                                           "       1.21 Gigawatts")
-        schematic += self.generate_section("Navigation System",
-                                           "   - Location Acquisition Methods:\n"
-                                           "       - GPS Coordinates\n"
-                                           "       - Temporal Spatial Temporizer\n"
-                                           "   - Destination Guidance:\n"
-                                           "       Heads-Up Holographic Display\n"
-                                           "   - Time Machine Position Monitoring:\n"
-                                           "       Time-Space Differential Synchronizer")
-        schematic += self.generate_section("Protective Systems",
-                                           "   - Temporal Shields:\n"
-                                           "       - Chrono-Displacement Shields\n"
-                                           "       - Temporal Field Diffusers\n"
-                                           "   - Time Machine Cloaking System:\n"
-                                           "       - Optical Camouflage\n"
-                                           "   - Anti-Time Paradox Safety Measures:\n"
-                                           "       - Temporal Paradox Detector\n"
-                                           "       - Temporal Flux Adjuster")
-        schematic += f"Thank you for using the {self.name} Time Machine AI.\n"
-        schematic += "Please note that this is a fictional system and cannot be built.\n"
-        schematic += "This schematic is for entertainment purposes only.\n"
+# Create an instance of the TimeMachineAI
+time_machine_ai = TimeMachineAI()
 
-        return schematic
+# Add schematics for different time machine models
+time_machine_ai.add_schematic("Model 1", "Schematic 1")
+time_machine_ai.add_schematic("Model 2", "Schematic 2")
 
-    def generate_header(self):
-        header = "Time Machine Schematics\n\n"
-        header += f"Designed by: {self.name}\n"
-        header += f"Date: {datetime.now().strftime('%d/%m/%Y')}\n\n"
-        return header
+# Get schematic for a time machine model
+schematic = time_machine_ai.get_schematic("Model 1")
+print("Schematic for Model 1:", schematic)
 
-    def generate_section(self, title, content):
-        section = f"{title}:\n\n"
-        section += content
-        section += "\n"
-        return section
+# Remove a schematic
+time_machine_ai.remove_schematic("Model 2")
 
-    def get_random_color(self):
-        return random.choice(self.colors)
+# Add formulas for time travel calculations
+time_machine_ai.add_formula("Formula 1", "x**2 + y")
+time_machine_ai.add_formula("Formula 2", "math.sin(x) + math.cos(y)")
 
+# Get formula for time travel calculation
+formula = time_machine_ai.get_formula("Formula 1")
+print("Formula 1:", formula)
 
-if __name__ == "__main__":
-    ai = TimeMachineAI("TimeMaster 9000")
-    flux_capacitor_color = ai.get_random_color()
-    chassis_color = ai.get_random_color()
-    schematics = ai.create_schematics().format(
-        flux_capacitor_color=flux_capacitor_color, chassis_color=chassis_color)
-    print(schematics)
+# Calculate time travel using a formula
+values = {'x': 5, 'y': 3}
+result = time_machine_ai.calculate_time_travel("Formula 1", values)
+print("Time travel result:", result)
