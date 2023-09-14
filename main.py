@@ -1,5 +1,6 @@
 import math
 
+
 class TimeMachineAI:
     def __init__(self):
         self.schematics = {}
@@ -92,15 +93,25 @@ class TimeMachineAI:
             report += f"{name}: {formula}\n"
         return report
 
+
 def main():
     ai = TimeMachineAI()
 
     ai.add_schematic("Time Machine 1", "Schematic 1")
     ai.add_schematic("Time Machine 2", "Schematic 2")
 
-    ai.add_formula("Time Travel Formula", "distance / speed")
-    ai.add_formula("Time Dilation Formula", "time / (math.sqrt(1 - (velocity**2/c**2)))")
-    ai.add_formula("Time Warp Formula", "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))")
+    ai.add_formula(
+        "Time Travel Formula",
+        "distance / speed"
+    )
+    ai.add_formula(
+        "Time Dilation Formula",
+        "time / (math.sqrt(1 - (velocity**2/c**2)))"
+    )
+    ai.add_formula(
+        "Time Warp Formula",
+        "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))"
+    )
 
     variables = {
         "distance": 100,
@@ -125,6 +136,7 @@ def main():
 
     report = ai.generate_report()
     print(report)
+
 
 if __name__ == "__main__":
     main()
