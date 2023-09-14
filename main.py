@@ -1,6 +1,5 @@
 import math
 
-
 class TimeMachineAI:
     def __init__(self):
         self.schematics = {}
@@ -20,15 +19,17 @@ class TimeMachineAI:
 
     def calculate(self, formula_name, variables):
         formula = self.formulas.get(formula_name)
-        if formula:
+        if formula is not None:
             return eval(formula, variables)
-        raise ValueError("Formula not found.")
+        else:
+            raise ValueError("Formula not found.")
 
     def analyze_schematic(self, schematic_name):
         schematic = self.schematics.get(schematic_name)
-        if schematic:
+        if schematic is not None:
             return f"Analyzing schematic: {schematic}"
-        raise ValueError("Schematic not found.")
+        else:
+            raise ValueError("Schematic not found.")
 
     def generate_report(self):
         report = "Time Machine AI Report:\n"
@@ -39,7 +40,6 @@ class TimeMachineAI:
         for name, formula in self.formulas.items():
             report += f"{name}: {formula}\n"
         return report
-
 
 def main():
     ai = TimeMachineAI()
@@ -74,7 +74,6 @@ def main():
 
     report = ai.generate_report()
     print(report)
-
 
 if __name__ == "__main__":
     main()
