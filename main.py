@@ -1,37 +1,31 @@
 import math
 
+
 class TimeMachineCalculator:
     def __init__(self, distance, velocity):
         self.distance = distance
         self.velocity = velocity
 
     def calculate_time(self):
-        time = self.distance / self.velocity
-        return time
+        return self.distance / self.velocity
 
     def calculate_energy(self):
-        energy = (self.velocity**2) / 2
-        return energy
+        return (self.velocity ** 2) / 2
 
     def calculate_acceleration(self):
-        acceleration = self.velocity / self.calculate_time()
-        return acceleration
+        return self.velocity / self.calculate_time()
 
     def calculate_force(self):
-        force = self.calculate_energy() / self.distance
-        return force
+        return self.calculate_energy() / self.distance
 
     def calculate_power(self):
-        power = self.calculate_force() * self.velocity
-        return power
+        return self.calculate_force() * self.velocity
 
     def calculate_work_done(self):
-        work_done = self.calculate_force() * self.distance
-        return work_done
+        return self.calculate_force() * self.distance
 
     def calculate_momentum(self, mass):
-        momentum = mass * self.velocity
-        return momentum
+        return mass * self.velocity
 
     def display_results(self, mass=None):
         print("Calculation Results:")
@@ -44,6 +38,7 @@ class TimeMachineCalculator:
         if mass is not None:
             print(f"Momentum: {self.calculate_momentum(mass)} kg*m/s")
 
+
 def main():
     print("Welcome to Time-Machine-AI")
     print("Please provide the following information:")
@@ -53,6 +48,7 @@ def main():
 
     calculator = TimeMachineCalculator(distance, velocity)
     calculator.display_results()
+
 
 if __name__ == "__main__":
     main()
