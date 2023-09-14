@@ -65,15 +65,16 @@ class TimeMachineUtils:
 
 
 def main():
-    # Create a TimeMachineAI object
+    # Create a TimeMachineAI object and add TimeMachineComponent objects
     time_machine_ai = TimeMachineAI()
 
-    # Create TimeMachineComponent objects and add them to TimeMachineAI
-    component1 = TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30))
-    component2 = TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
+    time_machine_components = [
+        TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30)),
+        TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
+    ]
 
-    time_machine_ai.add_component(component1)
-    time_machine_ai.add_component(component2)
+    for component in time_machine_components:
+        time_machine_ai.add_component(component)
 
     # Retrieve the time machine schematics
     schematics = time_machine_ai.get_time_machine_schematics()
