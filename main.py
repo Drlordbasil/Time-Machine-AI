@@ -1,22 +1,48 @@
 import math
 
-def calculate_time_machine_schematics(distance, velocity):
-    time = distance / velocity
-    energy = (velocity**2) / 2
-    acceleration = velocity / time
-    force = energy / distance
-    power = force * velocity
-    work_done = force * distance
-    momentum = mass * velocity
+class TimeMachineCalculator:
+    def __init__(self, distance, velocity):
+        self.distance = distance
+        self.velocity = velocity
 
-    print("Calculation Results:")
-    print(f"Time: {time} seconds")
-    print(f"Energy: {energy} joules")
-    print(f"Acceleration: {acceleration} m/s^2")
-    print(f"Force: {force} newtons")
-    print(f"Power: {power} watts")
-    print(f"Work Done: {work_done} joules")
-    print(f"Momentum: {momentum} kg*m/s")
+    def calculate_time(self):
+        time = self.distance / self.velocity
+        return time
+
+    def calculate_energy(self):
+        energy = (self.velocity**2) / 2
+        return energy
+
+    def calculate_acceleration(self):
+        acceleration = self.velocity / self.calculate_time()
+        return acceleration
+
+    def calculate_force(self):
+        force = self.calculate_energy() / self.distance
+        return force
+
+    def calculate_power(self):
+        power = self.calculate_force() * self.velocity
+        return power
+
+    def calculate_work_done(self):
+        work_done = self.calculate_force() * self.distance
+        return work_done
+
+    def calculate_momentum(self, mass):
+        momentum = mass * self.velocity
+        return momentum
+
+    def display_results(self, mass=None):
+        print("Calculation Results:")
+        print(f"Time: {self.calculate_time()} seconds")
+        print(f"Energy: {self.calculate_energy()} joules")
+        print(f"Acceleration: {self.calculate_acceleration()} m/s^2")
+        print(f"Force: {self.calculate_force()} newtons")
+        print(f"Power: {self.calculate_power()} watts")
+        print(f"Work Done: {self.calculate_work_done()} joules")
+        if mass is not None:
+            print(f"Momentum: {self.calculate_momentum(mass)} kg*m/s")
 
 def main():
     print("Welcome to Time-Machine-AI")
@@ -25,7 +51,8 @@ def main():
     distance = float(input("Distance (in meters): "))
     velocity = float(input("Velocity (in meters per second): "))
 
-    calculate_time_machine_schematics(distance, velocity)
+    calculator = TimeMachineCalculator(distance, velocity)
+    calculator.display_results()
 
 if __name__ == "__main__":
     main()
