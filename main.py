@@ -1,5 +1,6 @@
 import math
 
+
 class TimeMachineAI:
     def __init__(self):
         self.time_machine_components = []
@@ -37,7 +38,7 @@ class TimeMachineFormula:
     def calculate(self, variables):
         try:
             return eval(self.formula, variables)
-        except:
+        except Exception:
             return "Formula calculation failed: Invalid formula or variables"
 
 
@@ -66,7 +67,7 @@ class TimeMachineUtils:
     def calculate_velocity(time_dilation, time_elapsed):
         try:
             return math.sqrt(1 - ((time_dilation / time_elapsed) ** 2))
-        except:
+        except Exception:
             return "Velocity calculation failed: Invalid time dilation or time elapsed"
 
 
@@ -92,7 +93,7 @@ def main():
         "calculate_velocity": TimeMachineUtils.calculate_velocity,
     }
 
-    # Create a TimeMachineFormula object and calculate distance traveleda
+    # Create a TimeMachineFormula object and calculate distance traveled
     formula = "calculate_distance(100, 5)"
     tm_formula = TimeMachineFormula(formula)
     distance = tm_formula.calculate(variables)
