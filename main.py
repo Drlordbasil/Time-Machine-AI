@@ -8,7 +8,7 @@ class TimeMachineAI:
     def add_schematic(self, name, schematic):
         """
         Add a schematic to the TimeMachineAI.
-        
+
         Parameters:
         - name (str): The name of the schematic.
         - schematic (str): The schematic itself.
@@ -18,7 +18,7 @@ class TimeMachineAI:
     def add_formula(self, name, formula):
         """
         Add a formula to the TimeMachineAI.
-        
+
         Parameters:
         - name (str): The name of the formula.
         - formula (str): The formula itself.
@@ -28,7 +28,7 @@ class TimeMachineAI:
     def remove_schematic(self, name):
         """
         Remove a schematic from the TimeMachineAI.
-        
+
         Parameters:
         - name (str): The name of the schematic.
         """
@@ -37,7 +37,7 @@ class TimeMachineAI:
     def remove_formula(self, name):
         """
         Remove a formula from the TimeMachineAI.
-        
+
         Parameters:
         - name (str): The name of the formula.
         """
@@ -46,11 +46,11 @@ class TimeMachineAI:
     def calculate(self, formula_name, variables):
         """
         Calculate the result of a formula.
-        
+
         Parameters:
         - formula_name (str): The name of the formula to calculate.
         - variables (dict): A dictionary of variables required by the formula.
-        
+
         Returns:
         - The calculated result.
         """
@@ -63,10 +63,10 @@ class TimeMachineAI:
     def analyze_schematic(self, schematic_name):
         """
         Analyze a schematic.
-        
+
         Parameters:
         - schematic_name (str): The name of the schematic to analyze.
-        
+
         Returns:
         - A string with the analysis result.
         """
@@ -79,7 +79,7 @@ class TimeMachineAI:
     def generate_report(self):
         """
         Generate a report with all the schematics and formulas in the TimeMachineAI.
-        
+
         Returns:
         - A string with the generated report.
         """
@@ -92,36 +92,39 @@ class TimeMachineAI:
             report += f"{name}: {formula}\n"
         return report
 
-# Example usage
-ai = TimeMachineAI()
+def main():
+    ai = TimeMachineAI()
 
-ai.add_schematic("Time Machine 1", "Schematic 1")
-ai.add_schematic("Time Machine 2", "Schematic 2")
+    ai.add_schematic("Time Machine 1", "Schematic 1")
+    ai.add_schematic("Time Machine 2", "Schematic 2")
 
-ai.add_formula("Time Travel Formula", "distance / speed")
-ai.add_formula("Time Dilation Formula", "time / (math.sqrt(1 - (velocity**2/c**2)))")
-ai.add_formula("Time Warp Formula", "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))")
+    ai.add_formula("Time Travel Formula", "distance / speed")
+    ai.add_formula("Time Dilation Formula", "time / (math.sqrt(1 - (velocity**2/c**2)))")
+    ai.add_formula("Time Warp Formula", "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))")
 
-variables = {
-    "distance": 100,
-    "speed": 10,
-    "time": 5,
-    "velocity": 0.8,
-    "c": 299792458,
-    "gravity": 9.8
-}
+    variables = {
+        "distance": 100,
+        "speed": 10,
+        "time": 5,
+        "velocity": 0.8,
+        "c": 299792458,
+        "gravity": 9.8
+    }
 
-result = ai.calculate("Time Travel Formula", variables)
-print(f"Time Travel Result: {result}")
+    result = ai.calculate("Time Travel Formula", variables)
+    print(f"Time Travel Result: {result}")
 
-result = ai.calculate("Time Dilation Formula", variables)
-print(f"Time Dilation Result: {result}")
+    result = ai.calculate("Time Dilation Formula", variables)
+    print(f"Time Dilation Result: {result}")
 
-result = ai.calculate("Time Warp Formula", variables)
-print(f"Time Warp Result: {result}")
+    result = ai.calculate("Time Warp Formula", variables)
+    print(f"Time Warp Result: {result}")
 
-analysis = ai.analyze_schematic("Time Machine 1")
-print(analysis)
+    analysis = ai.analyze_schematic("Time Machine 1")
+    print(analysis)
 
-report = ai.generate_report()
-print(report)
+    report = ai.generate_report()
+    print(report)
+
+if __name__ == "__main__":
+    main()
