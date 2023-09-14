@@ -4,66 +4,75 @@ class TimeMachineAI:
     def __init__(self):
         self.schematics = {}
         self.formulas = {}
-    
+
     def add_schematic(self, name, schematic):
         self.schematics[name] = schematic
-    
+
+    def add_formula(self, name, formula):
+        self.formulas[name] = formula
+
     def remove_schematic(self, name):
         if name in self.schematics:
             del self.schematics[name]
-    
-    def get_schematic(self, name):
-        return self.schematics.get(name, None)
-    
-    def add_formula(self, name, formula):
-        self.formulas[name] = formula
-    
+
     def remove_formula(self, name):
         if name in self.formulas:
             del self.formulas[name]
-    
-    def get_formula(self, name):
-        return self.formulas.get(name, None)
-    
-    def calculate_time_travel(self, formula_name, values):
-        formula = self.get_formula(formula_name)
-        if formula is not None:
-            try:
-                x = eval(formula, {}, values)
-                return round(x, 2)
-            except Exception as e:
-                print("Error occurred during time travel calculation:", e)
+
+    def calculate(self, formula_name, variables):
+        if formula_name in self.formulas:
+            formula = self.formulas[formula_name]
+            return eval(formula, variables)
         else:
-            print("Formula does not exist.")
-        return None
-    
+            raise ValueError("Formula not found.")
+
+    def analyze_schematic(self, schematic_name):
+        if schematic_name in self.schematics:
+            schematic = self.schematics[schematic_name]
+            return f"Analyzing schematic: {schematic}"
+        else:
+            raise ValueError("Schematic not found.")
+
+    def generate_report(self):
+        report = f"Time Machine AI Report:\n"
+        report += "Schematics:\n"
+        for name, schematic in self.schematics.items():
+            report += f"{name}: {schematic}\n"
+        report += "Formulas:\n"
+        for name, formula in self.formulas.items():
+            report += f"{name}: {formula}\n"
+        return report
 
 # Example usage
+ai = TimeMachineAI()
 
-# Create an instance of the TimeMachineAI
-time_machine_ai = TimeMachineAI()
+ai.add_schematic("Time Machine 1", "Schematic 1")
+ai.add_schematic("Time Machine 2", "Schematic 2")
 
-# Add schematics for different time machine models
-time_machine_ai.add_schematic("Model 1", "Schematic 1")
-time_machine_ai.add_schematic("Model 2", "Schematic 2")
+ai.add_formula("Time Travel Formula", "distance / speed")
+ai.add_formula("Time Dilation Formula", "time / (math.sqrt(1 - (velocity**2/c**2)))")
+ai.add_formula("Time Warp Formula", "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))")
 
-# Get schematic for a time machine model
-schematic = time_machine_ai.get_schematic("Model 1")
-print("Schematic for Model 1:", schematic)
+variables = {
+    "distance": 100,
+    "speed": 10,
+    "time": 5,
+    "velocity": 0.8,
+    "c": 299792458,
+    "gravity": 9.8
+}
 
-# Remove a schematic
-time_machine_ai.remove_schematic("Model 2")
+result = ai.calculate("Time Travel Formula", variables)
+print(f"Time Travel Result: {result}")
 
-# Add formulas for time travel calculations
-time_machine_ai.add_formula("Formula 1", "x**2 + y")
-time_machine_ai.add_formula("Formula 2", "math.sin(x) + math.cos(y)")
+result = ai.calculate("Time Dilation Formula", variables)
+print(f"Time Dilation Result: {result}")
 
-# Get formula for time travel calculation
-formula = time_machine_ai.get_formula("Formula 1")
-print("Formula 1:", formula)
+result = ai.calculate("Time Warp Formula", variables)
+print(f"Time Warp Result: {result}")
 
-# Calculate time travel using a formula
-values = {'x': 5, 'y': 3}
-result = time_machine_ai.calculate_time_travel("Formula 1", values)
-if result is not None:
-    print("Time travel result:", result)
+analysis = ai.analyze_schematic("Time Machine 1")
+print(analysis)
+
+report = ai.generate_report()
+print(report)
