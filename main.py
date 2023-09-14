@@ -74,21 +74,22 @@ def main():
     schematics = time_machine_ai.get_time_machine_schematics()
     print(schematics)
 
+    # Define the custom functions to be used in the formula calculation
+    variables = {
+        "calculate_distance": TimeMachineUtils.calculate_distance,
+        "calculate_velocity": TimeMachineUtils.calculate_velocity,
+    }
+
     # Create a TimeMachineFormula object and calculate distance traveled
     formula = "calculate_distance(100, 5)"
     tm_formula = TimeMachineFormula(formula)
-    variables = {
-        "calculate_distance": TimeMachineUtils.calculate_distance,
-    }
     distance = tm_formula.calculate(variables)
     print(f"Distance traveled: {distance}")
 
     # Calculate velocity using time dilation and time_elapsed
     velocity_formula = "calculate_velocity(2, 10)"
     velocity_formula_obj = TimeMachineFormula(velocity_formula)
-    velocity = velocity_formula_obj.calculate({
-        "calculate_velocity": TimeMachineUtils.calculate_velocity,
-    })
+    velocity = velocity_formula_obj.calculate(variables)
     print(f"Velocity: {velocity}")
 
 if __name__ == "__main__":
