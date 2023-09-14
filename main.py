@@ -1,11 +1,19 @@
-# Improved Code:
-
 import math
 
 class TimeMachineCalculator:
     def __init__(self, distance, velocity):
         self._distance = distance
-        self._velocity = velocity
+        self._velocity = self._validate_velocity(velocity)
+
+    def _validate_velocity(self, velocity):
+        try:
+            velocity = float(velocity)
+            if velocity <= 0:
+                raise ValueError("Velocity must be greater than 0!")
+        except ValueError:
+            raise ValueError("Invalid input! Please enter a number for velocity.")
+            
+        return velocity
 
     @property
     def distance(self):
@@ -96,9 +104,13 @@ def get_velocity():
             print("Invalid input! Please enter a number for velocity.")
 
 
-def main():
+def print_welcome_message():
     print("Welcome to Time-Machine-AI")
     print("Please provide the following information:")
+
+
+def main():
+    print_welcome_message()
 
     distance = get_distance()
     velocity = get_velocity()
@@ -109,10 +121,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Improvements made:
-# 1. Moved the print statements into a separate function for better readability.
-# 2. Added input validation for distance and velocity inputs.
-# 3. Used f-strings for displaying input and output values.
-# 4. Used properties for calculated values.
-# 5. Refactored the code to make it more efficient, readable, and maintainable.
