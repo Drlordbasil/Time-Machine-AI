@@ -60,8 +60,6 @@ class TimeMachineUtils:
     def calculate_velocity(time_dilation, time_elapsed):
         return math.sqrt(1 - ((time_dilation / time_elapsed) ** 2))
 
-# Sample usage
-
 def main():
     # Create a TimeMachineAI object
     time_machine_ai = TimeMachineAI()
