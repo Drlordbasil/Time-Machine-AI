@@ -1,19 +1,13 @@
+# Improved Code:
+
 import math
 
 class TimeMachineCalculator:
     def __init__(self, distance, velocity):
+        if distance <= 0 or velocity <= 0:
+            raise ValueError("Distance and velocity must be greater than 0!")
         self._distance = distance
-        self._velocity = self._validate_velocity(velocity)
-
-    def _validate_velocity(self, velocity):
-        try:
-            velocity = float(velocity)
-            if velocity <= 0:
-                raise ValueError("Velocity must be greater than 0!")
-        except ValueError:
-            raise ValueError("Invalid input! Please enter a number for velocity.")
-            
-        return velocity
+        self._velocity = velocity
 
     @property
     def distance(self):
@@ -68,56 +62,53 @@ class TimeMachineCalculator:
     def calculate_momentum(self, mass):
         return mass * self.velocity
 
-    def display_results(self, mass=None):
+
+class TimeMachineAI:
+    @staticmethod
+    def display_results(time_machine):
         print("Calculation Results:")
-        print(f"Time: {self.time} seconds")
-        print(f"Energy: {self.energy} joules")
-        print(f"Acceleration: {self.acceleration} m/s^2")
-        print(f"Force: {self.force} newtons")
-        print(f"Power: {self.power} watts")
-        print(f"Work Done: {self.work_done} joules")
-        if mass is not None:
-            print(f"Momentum: {self.calculate_momentum(mass)} kg*m/s")
+        print(f"Time: {time_machine.time} seconds")
+        print(f"Energy: {time_machine.energy} joules")
+        print(f"Acceleration: {time_machine.acceleration} m/s^2")
+        print(f"Force: {time_machine.force} newtons")
+        print(f"Power: {time_machine.power} watts")
+        print(f"Work Done: {time_machine.work_done} joules")
 
+    @staticmethod
+    def get_distance():
+        while True:
+            try:
+                distance = float(input("Distance (in meters): "))
+                if distance > 0:
+                    return distance
+                else:
+                    print("Distance must be greater than 0!")
+            except ValueError:
+                print("Invalid input! Please enter a number for distance.")
 
-def get_distance():
-    while True:
-        try:
-            distance = float(input("Distance (in meters): "))
-            if distance > 0:
-                return distance
-            else:
-                print("Distance must be greater than 0!")
-        except ValueError:
-            print("Invalid input! Please enter a number for distance.")
+    @staticmethod
+    def get_velocity():
+        while True:
+            try:
+                velocity = float(input("Velocity (in meters per second): "))
+                if velocity > 0:
+                    return velocity
+                else:
+                    print("Velocity must be greater than 0!")
+            except ValueError:
+                print("Invalid input! Please enter a number for velocity.")
 
+    @staticmethod
+    def main():
+        print("Welcome to Time-Machine-AI")
+        print("Please provide the following information:")
 
-def get_velocity():
-    while True:
-        try:
-            velocity = float(input("Velocity (in meters per second): "))
-            if velocity > 0:
-                return velocity
-            else:
-                print("Velocity must be greater than 0!")
-        except ValueError:
-            print("Invalid input! Please enter a number for velocity.")
+        distance = TimeMachineAI.get_distance()
+        velocity = TimeMachineAI.get_velocity()
 
-
-def print_welcome_message():
-    print("Welcome to Time-Machine-AI")
-    print("Please provide the following information:")
-
-
-def main():
-    print_welcome_message()
-
-    distance = get_distance()
-    velocity = get_velocity()
-
-    calculator = TimeMachineCalculator(distance, velocity)
-    calculator.display_results()
+        calculator = TimeMachineCalculator(distance, velocity)
+        TimeMachineAI.display_results(calculator)
 
 
 if __name__ == "__main__":
-    main()
+    TimeMachineAI.main()
