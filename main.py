@@ -16,6 +16,7 @@ class TimeMachineAI:
             schematics += component.to_schematic() + "\n"
         return schematics
 
+
 class TimeMachineComponent:
     def __init__(self, name, material, dimensions):
         self.name = name
@@ -28,12 +29,14 @@ class TimeMachineComponent:
         schematic += f"Dimensions: {','.join(map(str, self.dimensions))}\n"
         return schematic
 
+
 class TimeMachineFormula:
     def __init__(self, formula):
         self.formula = formula
 
     def calculate(self, variables):
         return eval(self.formula, variables)
+
 
 class TimeMachineUtils:
     @staticmethod
@@ -60,6 +63,7 @@ class TimeMachineUtils:
     def calculate_velocity(time_dilation, time_elapsed):
         return math.sqrt(1 - ((time_dilation / time_elapsed) ** 2))
 
+
 def main():
     # Create a TimeMachineAI object
     time_machine_ai = TimeMachineAI()
@@ -67,6 +71,7 @@ def main():
     # Create TimeMachineComponent objects and add them to TimeMachineAI
     component1 = TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30))
     component2 = TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
+
     time_machine_ai.add_component(component1)
     time_machine_ai.add_component(component2)
 
@@ -91,6 +96,7 @@ def main():
     velocity_formula_obj = TimeMachineFormula(velocity_formula)
     velocity = velocity_formula_obj.calculate(variables)
     print(f"Velocity: {velocity}")
+
 
 if __name__ == "__main__":
     main()
