@@ -62,32 +62,36 @@ class TimeMachineUtils:
 
 # Sample usage
 
-# Create a TimeMachineAI object
-time_machine_ai = TimeMachineAI()
+def main():
+    # Create a TimeMachineAI object
+    time_machine_ai = TimeMachineAI()
 
-# Create TimeMachineComponent objects and add them to TimeMachineAI
-component1 = TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30))
-component2 = TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
-time_machine_ai.add_component(component1)
-time_machine_ai.add_component(component2)
+    # Create TimeMachineComponent objects and add them to TimeMachineAI
+    component1 = TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30))
+    component2 = TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
+    time_machine_ai.add_component(component1)
+    time_machine_ai.add_component(component2)
 
-# Retrieve the time machine schematics
-schematics = time_machine_ai.get_time_machine_schematics()
-print(schematics)
+    # Retrieve the time machine schematics
+    schematics = time_machine_ai.get_time_machine_schematics()
+    print(schematics)
 
-# Create a TimeMachineFormula object and calculate distance traveled
-formula = "calculate_distance(100, 5)"
-tm_formula = TimeMachineFormula(formula)
-variables = {
-    "calculate_distance": TimeMachineUtils.calculate_distance,
-}
-distance = tm_formula.calculate(variables)
-print(f"Distance traveled: {distance}")
+    # Create a TimeMachineFormula object and calculate distance traveled
+    formula = "calculate_distance(100, 5)"
+    tm_formula = TimeMachineFormula(formula)
+    variables = {
+        "calculate_distance": TimeMachineUtils.calculate_distance,
+    }
+    distance = tm_formula.calculate(variables)
+    print(f"Distance traveled: {distance}")
 
-# Calculate velocity using time dilation and time_elapsed
-velocity_formula = "calculate_velocity(2, 10)"
-velocity_formula_obj = TimeMachineFormula(velocity_formula)
-velocity = velocity_formula_obj.calculate({
-    "calculate_velocity": TimeMachineUtils.calculate_velocity,
-})
-print(f"Velocity: {velocity}")
+    # Calculate velocity using time dilation and time_elapsed
+    velocity_formula = "calculate_velocity(2, 10)"
+    velocity_formula_obj = TimeMachineFormula(velocity_formula)
+    velocity = velocity_formula_obj.calculate({
+        "calculate_velocity": TimeMachineUtils.calculate_velocity,
+    })
+    print(f"Velocity: {velocity}")
+
+if __name__ == "__main__":
+    main()
