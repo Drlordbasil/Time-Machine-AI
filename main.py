@@ -13,7 +13,7 @@ class TimeMachineAI:
     def get_time_machine_schematics(self):
         schematics = ""
         for component in self.time_machine_components:
-            schematics += component.to_schematic() + "\n"
+            schematics += component.to_schematic() + '\n'
         return schematics
 
 
@@ -24,7 +24,10 @@ class TimeMachineComponent:
         self.dimensions = dimensions
 
     def to_schematic(self):
-        return f"Component: {self.name}\nMaterial: {self.material}\nDimensions: {','.join(map(str, self.dimensions))}\n"
+        schematic = f"Component: {self.name}\n"
+        schematic += f"Material: {self.material}\n"
+        schematic += f"Dimensions: {', '.join(map(str, self.dimensions))}\n"
+        return schematic
 
 
 class TimeMachineFormula:
@@ -54,14 +57,15 @@ class TimeMachineUtils:
 
     @staticmethod
     def calculate_time_dilation(time_elapsed, velocity):
-        return math.sqrt(1 - velocity ** 2) * time_elapsed
+        return math.sqrt(1 - (velocity ** 2)) * time_elapsed
 
     @staticmethod
     def calculate_velocity(time_dilation, time_elapsed):
-        return math.sqrt(1 - (time_dilation / time_elapsed) ** 2)
+        return math.sqrt(1 - ((time_dilation / time_elapsed) ** 2))
 
 
 def main():
+    # Create a TimeMachineAI object and add TimeMachineComponent objects
     time_machine_ai = TimeMachineAI()
 
     time_machine_components = [
@@ -72,19 +76,23 @@ def main():
     for component in time_machine_components:
         time_machine_ai.add_component(component)
 
+    # Retrieve the time machine schematics
     schematics = time_machine_ai.get_time_machine_schematics()
     print(schematics)
 
+    # Define the custom functions to be used in the formula calculation
     variables = {
         "calculate_distance": TimeMachineUtils.calculate_distance,
         "calculate_velocity": TimeMachineUtils.calculate_velocity,
     }
 
+    # Create a TimeMachineFormula object and calculate distance traveled
     formula = "calculate_distance(100, 5)"
     tm_formula = TimeMachineFormula(formula)
     distance = tm_formula.calculate(variables)
     print(f"Distance traveled: {distance}")
 
+    # Calculate velocity using time dilation and time_elapsed
     velocity_formula = "calculate_velocity(2, 10)"
     velocity_formula_obj = TimeMachineFormula(velocity_formula)
     velocity = velocity_formula_obj.calculate(variables)
