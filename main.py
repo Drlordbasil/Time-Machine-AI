@@ -1,114 +1,63 @@
-# Improved Code:
-
 import math
 
-class TimeMachineCalculator:
-    def __init__(self, distance, velocity):
-        if distance <= 0 or velocity <= 0:
-            raise ValueError("Distance and velocity must be greater than 0!")
-        self._distance = distance
-        self._velocity = velocity
+def calculate_energy(mass, velocity):
+    energy = mass * velocity**2
+    return energy
 
-    @property
-    def distance(self):
-        return self._distance
+def calculate_time_dilation(acceleration, time):
+    velocity = acceleration * time
+    time_dilation = math.sqrt(1 - (velocity**2 / (299792458**2)))
+    return time_dilation
 
-    @property
-    def velocity(self):
-        return self._velocity
+def calculate_coordinate(time, distance):
+    coordinate = distance * math.exp(-time)
+    return coordinate
 
-    @property
-    def time(self):
-        return self.calculate_time()
+def calculate_time_travel(time_dilation, time):
+    time_travel = time / math.sqrt(1 - time_dilation**2)
+    return time_travel
 
-    @property
-    def energy(self):
-        return self.calculate_energy()
+def calculate_schematic(length, width, height):
+    volume = length * width * height
+    surface_area = 2 * (length * width + length * height + width * height)
+    return volume, surface_area
 
-    @property
-    def acceleration(self):
-        return self.calculate_acceleration()
+def print_schematic(schematic):
+    volume, surface_area = schematic
+    print(f"Time Machine Schematic:")
+    print(f"Volume: {volume} cubic units")
+    print(f"Surface Area: {surface_area} square units")
 
-    @property
-    def force(self):
-        return self.calculate_force()
+def main():
+    print("Welcome to the Time Machine AI!")
+    print("Please enter the following details:")
 
-    @property
-    def power(self):
-        return self.calculate_power()
+    mass = float(input("Mass of Time Machine (in kg): "))
+    velocity = float(input("Velocity of Time Machine (in m/s): "))
 
-    @property
-    def work_done(self):
-        return self.calculate_work_done()
+    energy = calculate_energy(mass, velocity)
+    print(f"Energy required for Time Machine: {energy} J")
 
-    def calculate_time(self):
-        return self.distance / self.velocity
+    acceleration = float(input("Acceleration of Time Machine (in m/s^2): "))
+    time = float(input("Time (in s): "))
 
-    def calculate_energy(self):
-        return (self.velocity ** 2) / 2
+    time_dilation = calculate_time_dilation(acceleration, time)
+    print(f"Time Dilation: {time_dilation}")
 
-    def calculate_acceleration(self):
-        return self.velocity / self.calculate_time()
+    distance = float(input("Distance (in m): "))
 
-    def calculate_force(self):
-        return self.calculate_energy() / self.distance
+    coordinate = calculate_coordinate(time, distance)
+    print(f"Coordinate in Time Machine: {coordinate}")
 
-    def calculate_power(self):
-        return self.calculate_force() * self.velocity
+    time_travel = calculate_time_travel(time_dilation, time)
+    print(f"Time Travel: {time_travel} s")
 
-    def calculate_work_done(self):
-        return self.calculate_force() * self.distance
+    length = float(input("Length of Time Machine (in units): "))
+    width = float(input("Width of Time Machine (in units): "))
+    height = float(input("Height of Time Machine (in units): "))
 
-    def calculate_momentum(self, mass):
-        return mass * self.velocity
-
-
-class TimeMachineAI:
-    @staticmethod
-    def display_results(time_machine):
-        print("Calculation Results:")
-        print(f"Time: {time_machine.time} seconds")
-        print(f"Energy: {time_machine.energy} joules")
-        print(f"Acceleration: {time_machine.acceleration} m/s^2")
-        print(f"Force: {time_machine.force} newtons")
-        print(f"Power: {time_machine.power} watts")
-        print(f"Work Done: {time_machine.work_done} joules")
-
-    @staticmethod
-    def get_distance():
-        while True:
-            try:
-                distance = float(input("Distance (in meters): "))
-                if distance > 0:
-                    return distance
-                else:
-                    print("Distance must be greater than 0!")
-            except ValueError:
-                print("Invalid input! Please enter a number for distance.")
-
-    @staticmethod
-    def get_velocity():
-        while True:
-            try:
-                velocity = float(input("Velocity (in meters per second): "))
-                if velocity > 0:
-                    return velocity
-                else:
-                    print("Velocity must be greater than 0!")
-            except ValueError:
-                print("Invalid input! Please enter a number for velocity.")
-
-    @staticmethod
-    def main():
-        print("Welcome to Time-Machine-AI")
-        print("Please provide the following information:")
-
-        distance = TimeMachineAI.get_distance()
-        velocity = TimeMachineAI.get_velocity()
-
-        calculator = TimeMachineCalculator(distance, velocity)
-        TimeMachineAI.display_results(calculator)
-
+    schematic = calculate_schematic(length, width, height)
+    print_schematic(schematic)
 
 if __name__ == "__main__":
-    TimeMachineAI.main()
+    main()
