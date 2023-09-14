@@ -5,16 +5,16 @@ class TimeMachineAI:
         self.schematics = {}
         self.formulas = {}
         
-    def add_schematic(self, name: str, schematic: str):
+    def add_schematic(self, name: str, schematic: str) -> None:
         self.schematics[name] = schematic
         
-    def add_formula(self, name: str, formula: str):
+    def add_formula(self, name: str, formula: str) -> None:
         self.formulas[name] = formula
         
-    def remove_schematic(self, name: str):
+    def remove_schematic(self, name: str) -> None:
         self.schematics.pop(name, None)
         
-    def remove_formula(self, name: str):
+    def remove_formula(self, name: str) -> None:
         self.formulas.pop(name, None)
         
     def calculate(self, formula_name: str, variables: dict) -> float:
@@ -43,8 +43,8 @@ class TimeMachineAI:
             report += f"{name}: {formula}\n"
         
         return report
-        
-def main():
+
+def main() -> None:
     ai = TimeMachineAI()
     
     ai.add_schematic("Time Machine 1", "Schematic 1")
@@ -62,15 +62,10 @@ def main():
         "c": 299792458,
         "gravity": 9.8
     }
-    
-    result = ai.calculate("Time Travel Formula", variables)
-    print(f"Time Travel Result: {result}")
-    
-    result = ai.calculate("Time Dilation Formula", variables)
-    print(f"Time Dilation Result: {result}")
-    
-    result = ai.calculate("Time Warp Formula", variables)
-    print(f"Time Warp Result: {result}")
+
+    formulas = ["Time Travel Formula", "Time Dilation Formula", "Time Warp Formula"]
+    results = [f'{name} Result: {ai.calculate(name, variables)}' for name in formulas]
+    print("\n".join(results))
     
     analysis = ai.analyze_schematic("Time Machine 1")
     print(analysis)
