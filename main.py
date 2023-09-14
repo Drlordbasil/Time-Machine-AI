@@ -2,76 +2,92 @@ import math
 
 class TimeMachineAI:
     def __init__(self):
-        self.schematics = {}
-        self.formulas = {}
-        
-    def add_schematic(self, name: str, schematic: str) -> None:
-        self.schematics[name] = schematic
-        
-    def add_formula(self, name: str, formula: str) -> None:
-        self.formulas[name] = formula
-        
-    def remove_schematic(self, name: str) -> None:
-        self.schematics.pop(name, None)
-        
-    def remove_formula(self, name: str) -> None:
-        self.formulas.pop(name, None)
-        
-    def calculate(self, formula_name: str, variables: dict) -> float:
-        formula = self.formulas.get(formula_name)
-        if formula is None:
-            raise ValueError("Formula not found.")
-        
-        result = eval(formula, variables, {"math": math})
-        return result
-        
-    def analyze_schematic(self, schematic_name: str) -> str:
-        schematic = self.schematics.get(schematic_name)
-        if schematic is None:
-            raise ValueError("Schematic not found.")
-        return f"Analyzing schematic: {schematic}"
-        
-    def generate_report(self) -> str:
-        report = "Time Machine AI Report:\n"
-        
-        report += "Schematics:\n"
-        for name, schematic in self.schematics.items():
-            report += f"{name}: {schematic}\n"
-            
-        report += "Formulas:\n"
-        for name, formula in self.formulas.items():
-            report += f"{name}: {formula}\n"
-        
-        return report
+        self.time_machine_components = []
 
-def main() -> None:
-    ai = TimeMachineAI()
-    
-    ai.add_schematic("Time Machine 1", "Schematic 1")
-    ai.add_schematic("Time Machine 2", "Schematic 2")
-    
-    ai.add_formula("Time Travel Formula", "distance / speed")
-    ai.add_formula("Time Dilation Formula", "time / math.sqrt(1 - (velocity**2 / c**2))")
-    ai.add_formula("Time Warp Formula", "math.exp(4 * gravity * time) / (1 + math.exp(4 * gravity * time))")
-    
-    variables = {
-        "distance": 100,
-        "speed": 10,
-        "time": 5,
-        "velocity": 0.8,
-        "c": 299792458,
-        "gravity": 9.8
-    }
+    def add_component(self, component):
+        self.time_machine_components.append(component)
 
-    formulas = ["Time Travel Formula", "Time Dilation Formula", "Time Warp Formula"]
-    results = [f'{name} Result: {ai.calculate(name, variables)}' for name in formulas]
-    print("\n".join(results))
-    
-    analysis = ai.analyze_schematic("Time Machine 1")
-    print(analysis)
-    
-    report = ai.generate_report()
-    print(report)
-    
-if __name__ == "__main__":
-    main()
+    def remove_component(self, component):
+        self.time_machine_components.remove(component)
+
+    def get_time_machine_schematics(self):
+        schematics = ""
+        for component in self.time_machine_components:
+            schematics += component.to_schematic() + "\n"
+        return schematics
+
+class TimeMachineComponent:
+    def __init__(self, name, material, dimensions):
+        self.name = name
+        self.material = material
+        self.dimensions = dimensions
+
+    def to_schematic(self):
+        schematic = f"Component: {self.name}\n"
+        schematic += f"Material: {self.material}\n"
+        schematic += f"Dimensions: {','.join(str(d) for d in self.dimensions)}\n"
+        return schematic
+
+class TimeMachineFormula:
+    def __init__(self, formula):
+        self.formula = formula
+
+    def calculate(self, variables):
+        return eval(self.formula, variables)
+
+class TimeMachineUtils:
+    @staticmethod
+    def calculate_distance(time_travel_speed, time_elapsed):
+        return time_travel_speed * time_elapsed
+
+    @staticmethod
+    def calculate_time_elapsed(distance, time_travel_speed):
+        return distance / time_travel_speed
+
+    @staticmethod
+    def calculate_space_distance(space_travel_speed, space_elapsed):
+        return space_travel_speed * space_elapsed
+
+    @staticmethod
+    def calculate_space_elapsed(space_distance, space_travel_speed):
+        return space_distance / space_travel_speed
+
+    @staticmethod
+    def calculate_time_dilation(time_elapsed, velocity):
+        return math.sqrt(1 - (velocity ** 2)) * time_elapsed
+
+    @staticmethod
+    def calculate_velocity(time_dilation, time_elapsed):
+        return math.sqrt(1 - ((time_dilation / time_elapsed) ** 2))
+
+# Sample usage
+
+# Create a TimeMachineAI object
+time_machine_ai = TimeMachineAI()
+
+# Create TimeMachineComponent objects and add them to TimeMachineAI
+component1 = TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30))
+component2 = TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
+time_machine_ai.add_component(component1)
+time_machine_ai.add_component(component2)
+
+# Retrieve the time machine schematics
+schematics = time_machine_ai.get_time_machine_schematics()
+print(schematics)
+
+# Create a TimeMachineFormula object and calculate distance traveled
+formula = "calculate_distance(100, 5)"
+tm_formula = TimeMachineFormula(formula)
+variables = {
+    "calculate_distance": TimeMachineUtils.calculate_distance,
+}
+distance = tm_formula.calculate(variables)
+print(f"Distance traveled: {distance}")
+
+# Calculate velocity using time dilation and time_elapsed
+velocity_formula = "calculate_velocity(2, 10)"
+velocity_formula_obj = TimeMachineFormula(velocity_formula)
+velocity = velocity_formula_obj.calculate({
+    "calculate_velocity": TimeMachineUtils.calculate_velocity,
+})
+print(f"Velocity: {velocity}")
