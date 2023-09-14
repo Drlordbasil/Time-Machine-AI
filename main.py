@@ -19,17 +19,15 @@ class TimeMachineAI:
         
     def calculate(self, formula_name, variables):
         formula = self.formulas.get(formula_name)
-        if formula is not None:
-            return eval(formula, variables)
-        else:
+        if formula is None:
             raise ValueError("Formula not found.")
+        return eval(formula, variables)
         
     def analyze_schematic(self, schematic_name):
         schematic = self.schematics.get(schematic_name)
-        if schematic is not None:
-            return f"Analyzing schematic: {schematic}"
-        else:
+        if schematic is None:
             raise ValueError("Schematic not found.")
+        return f"Analyzing schematic: {schematic}"
         
     def generate_report(self):
         report = "Time Machine AI Report:\n"
