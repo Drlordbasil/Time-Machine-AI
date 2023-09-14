@@ -1,110 +1,31 @@
 import math
 
+def calculate_time_machine_schematics(distance, velocity):
+    time = distance / velocity
+    energy = (velocity**2) / 2
+    acceleration = velocity / time
+    force = energy / distance
+    power = force * velocity
+    work_done = force * distance
+    momentum = mass * velocity
 
-class TimeMachineAI:
-    def __init__(self):
-        self.time_machine_components = []
-
-    def add_component(self, component):
-        self.time_machine_components.append(component)
-
-    def remove_component(self, component):
-        self.time_machine_components.remove(component)
-
-    def get_time_machine_schematics(self):
-        schematics = ""
-        for component in self.time_machine_components:
-            schematics += component.to_schematic() + '\n'
-        return schematics
-
-
-class TimeMachineComponent:
-    def __init__(self, name, material, dimensions):
-        self.name = name
-        self.material = material
-        self.dimensions = dimensions
-
-    def to_schematic(self):
-        schematic = f"Component: {self.name}\n"
-        schematic += f"Material: {self.material}\n"
-        schematic += f"Dimensions: {', '.join(map(str, self.dimensions))}\n"
-        return schematic
-
-
-class TimeMachineFormula:
-    def __init__(self, formula):
-        self.formula = formula
-
-    def calculate(self, variables):
-        try:
-            return eval(self.formula, variables)
-        except Exception:
-            return "Formula calculation failed: Invalid formula or variables"
-
-
-class TimeMachineUtils:
-    @staticmethod
-    def calculate_distance(time_travel_speed, time_elapsed):
-        return time_travel_speed * time_elapsed
-
-    @staticmethod
-    def calculate_time_elapsed(distance, time_travel_speed):
-        return distance / time_travel_speed
-
-    @staticmethod
-    def calculate_space_distance(space_travel_speed, space_elapsed):
-        return space_travel_speed * space_elapsed
-
-    @staticmethod
-    def calculate_space_elapsed(space_distance, space_travel_speed):
-        return space_distance / space_travel_speed
-
-    @staticmethod
-    def calculate_time_dilation(time_elapsed, velocity):
-        return math.sqrt(1 - (velocity ** 2)) * time_elapsed
-
-    @staticmethod
-    def calculate_velocity(time_dilation, time_elapsed):
-        try:
-            return math.sqrt(1 - ((time_dilation / time_elapsed) ** 2))
-        except Exception:
-            return "Velocity calculation failed: Invalid time dilation or time elapsed"
-
+    print("Calculation Results:")
+    print(f"Time: {time} seconds")
+    print(f"Energy: {energy} joules")
+    print(f"Acceleration: {acceleration} m/s^2")
+    print(f"Force: {force} newtons")
+    print(f"Power: {power} watts")
+    print(f"Work Done: {work_done} joules")
+    print(f"Momentum: {momentum} kg*m/s")
 
 def main():
-    # Create a TimeMachineAI object and add TimeMachineComponent objects
-    time_machine_ai = TimeMachineAI()
+    print("Welcome to Time-Machine-AI")
+    print("Please provide the following information:")
 
-    time_machine_components = [
-        TimeMachineComponent("Time Engine", "Platinum", (10, 20, 30)),
-        TimeMachineComponent("Space Field Generator", "Titanium", (15, 25, 35))
-    ]
+    distance = float(input("Distance (in meters): "))
+    velocity = float(input("Velocity (in meters per second): "))
 
-    for component in time_machine_components:
-        time_machine_ai.add_component(component)
-
-    # Retrieve the time machine schematics
-    schematics = time_machine_ai.get_time_machine_schematics()
-    print(schematics)
-
-    # Define the custom functions to be used in the formula calculation
-    variables = {
-        "calculate_distance": TimeMachineUtils.calculate_distance,
-        "calculate_velocity": TimeMachineUtils.calculate_velocity,
-    }
-
-    # Create a TimeMachineFormula object and calculate distance traveled
-    formula = "calculate_distance(100, 5)"
-    tm_formula = TimeMachineFormula(formula)
-    distance = tm_formula.calculate(variables)
-    print(f"Distance traveled: {distance}")
-
-    # Calculate velocity using time dilation and time_elapsed
-    velocity_formula = "calculate_velocity(2, 10)"
-    velocity_formula_obj = TimeMachineFormula(velocity_formula)
-    velocity = velocity_formula_obj.calculate(variables)
-    print(f"Velocity: {velocity}")
-
+    calculate_time_machine_schematics(distance, velocity)
 
 if __name__ == "__main__":
     main()
