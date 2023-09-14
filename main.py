@@ -5,16 +5,16 @@ class TimeMachineAI:
         self.schematics = {}
         self.formulas = {}
         
-    def add_schematic(self, name: str, schematic: str) -> None:
+    def add_schematic(self, name: str, schematic: str):
         self.schematics[name] = schematic
         
-    def add_formula(self, name: str, formula: str) -> None:
+    def add_formula(self, name: str, formula: str):
         self.formulas[name] = formula
         
-    def remove_schematic(self, name: str) -> None:
+    def remove_schematic(self, name: str):
         self.schematics.pop(name, None)
         
-    def remove_formula(self, name: str) -> None:
+    def remove_formula(self, name: str):
         self.formulas.pop(name, None)
         
     def calculate(self, formula_name: str, variables: dict) -> float:
@@ -44,7 +44,7 @@ class TimeMachineAI:
         
         return report
         
-def main() -> None:
+def main():
     ai = TimeMachineAI()
     
     ai.add_schematic("Time Machine 1", "Schematic 1")
