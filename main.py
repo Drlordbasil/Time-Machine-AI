@@ -1,59 +1,53 @@
 import math
 
-
 class TimeMachineAI:
     def __init__(self):
         self.schematics = {}
         self.formulas = {}
 
     def add_schematic(self, name, schematic):
-        """
-        Add a schematic to the TimeMachineAI.
+        """Add a schematic to the TimeMachineAI.
 
-        Parameters:
-        - name (str): The name of the schematic.
-        - schematic (str): The schematic itself.
+        Args:
+            name (str): The name of the schematic.
+            schematic (str): The schematic itself.
         """
         self.schematics[name] = schematic
 
     def add_formula(self, name, formula):
-        """
-        Add a formula to the TimeMachineAI.
+        """Add a formula to the TimeMachineAI.
 
-        Parameters:
-        - name (str): The name of the formula.
-        - formula (str): The formula itself.
+        Args:
+            name (str): The name of the formula.
+            formula (str): The formula itself.
         """
         self.formulas[name] = formula
 
     def remove_schematic(self, name):
-        """
-        Remove a schematic from the TimeMachineAI.
+        """Remove a schematic from the TimeMachineAI.
 
-        Parameters:
-        - name (str): The name of the schematic.
+        Args:
+            name (str): The name of the schematic.
         """
         self.schematics.pop(name, None)
 
     def remove_formula(self, name):
-        """
-        Remove a formula from the TimeMachineAI.
+        """Remove a formula from the TimeMachineAI.
 
-        Parameters:
-        - name (str): The name of the formula.
+        Args:
+            name (str): The name of the formula.
         """
         self.formulas.pop(name, None)
 
     def calculate(self, formula_name, variables):
-        """
-        Calculate the result of a formula.
+        """Calculate the result of a formula.
 
-        Parameters:
-        - formula_name (str): The name of the formula to calculate.
-        - variables (dict): A dictionary of variables required by the formula.
+        Args:
+            formula_name (str): The name of the formula to calculate.
+            variables (dict): A dictionary of variables required by the formula.
 
         Returns:
-        - The calculated result.
+            The calculated result.
         """
         formula = self.formulas.get(formula_name)
         if formula is not None:
@@ -62,14 +56,13 @@ class TimeMachineAI:
             raise ValueError("Formula not found.")
 
     def analyze_schematic(self, schematic_name):
-        """
-        Analyze a schematic.
+        """Analyze a schematic.
 
-        Parameters:
-        - schematic_name (str): The name of the schematic to analyze.
+        Args:
+            schematic_name (str): The name of the schematic to analyze.
 
         Returns:
-        - A string with the analysis result.
+            A string with the analysis result.
         """
         schematic = self.schematics.get(schematic_name)
         if schematic is not None:
@@ -78,11 +71,10 @@ class TimeMachineAI:
             raise ValueError("Schematic not found.")
 
     def generate_report(self):
-        """
-        Generate a report with all the schematics and formulas in the TimeMachineAI.
+        """Generate a report with all the schematics and formulas in the TimeMachineAI.
 
         Returns:
-        - A string with the generated report.
+            A string with the generated report.
         """
         report = f"Time Machine AI Report:\n"
         report += "Schematics:\n"
@@ -93,25 +85,15 @@ class TimeMachineAI:
             report += f"{name}: {formula}\n"
         return report
 
-
 def main():
     ai = TimeMachineAI()
 
     ai.add_schematic("Time Machine 1", "Schematic 1")
     ai.add_schematic("Time Machine 2", "Schematic 2")
 
-    ai.add_formula(
-        "Time Travel Formula",
-        "distance / speed"
-    )
-    ai.add_formula(
-        "Time Dilation Formula",
-        "time / (math.sqrt(1 - (velocity**2/c**2)))"
-    )
-    ai.add_formula(
-        "Time Warp Formula",
-        "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))"
-    )
+    ai.add_formula("Time Travel Formula", "distance / speed")
+    ai.add_formula("Time Dilation Formula", "time / (math.sqrt(1 - (velocity**2/c**2)))")
+    ai.add_formula("Time Warp Formula", "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))")
 
     variables = {
         "distance": 100,
@@ -136,7 +118,6 @@ def main():
 
     report = ai.generate_report()
     print(report)
-
 
 if __name__ == "__main__":
     main()
