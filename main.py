@@ -51,8 +51,8 @@ def main() -> None:
     ai.add_schematic("Time Machine 2", "Schematic 2")
     
     ai.add_formula("Time Travel Formula", "distance / speed")
-    ai.add_formula("Time Dilation Formula", "time / (math.sqrt(1 - (velocity**2/c**2)))")
-    ai.add_formula("Time Warp Formula", "(math.exp(4*gravity*time)) / (1 + math.exp(4*gravity*time))")
+    ai.add_formula("Time Dilation Formula", "time / math.sqrt(1 - (velocity**2 / c**2))")
+    ai.add_formula("Time Warp Formula", "math.exp(4 * gravity * time) / (1 + math.exp(4 * gravity * time))")
     
     variables = {
         "distance": 100,
